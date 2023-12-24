@@ -1,0 +1,22 @@
+
+.background-pic {
+  
+  background-size: contain;
+}
+
+.heading {
+
+  font-family: "Bookman Old Style";
+  background-color: rgba(15, 15, 15 ,0.6);
+}
+
+.mainContainer{
+
+  background-size: 100% 20%;
+  background-size: contain;
+  height: 300px;
+}
+
+.container{
+  margin-top:50px;
+}

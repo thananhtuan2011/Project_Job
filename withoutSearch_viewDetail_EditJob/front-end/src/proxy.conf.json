@@ -1,0 +1,30 @@
+[
+    {
+    "context": ["/exchange"],
+    "target": "https://www.dongabank.com.vn",
+    "secure": true,
+    "changeOrigin":true,
+    "logLevel":"debug"
+    },
+    {
+        "context": ["/books"],
+        "target": "http://localhost:3000",
+        "secure": true,
+        "changeOrigin":true,
+        "logLevel":"debug"
+        } ,
+        {
+            "context": ["/fashions"],
+            "target": "http://localhost:3002",
+            "secure": true,
+            "changeOrigin":true,
+            "logLevel":"debug"
+            } ,
+            {
+                "context": ["/api/user"],
+                "target": "http://localhost:5500",
+                "secure": true,
+                "changeOrigin":true,
+                "logLevel":"debug"
+                } 
+    ]
