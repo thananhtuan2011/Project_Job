@@ -21,7 +21,7 @@ import { ActionInsertComponent } from './action-insert/action-insert.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: JobBoardComponent },
-  { path: 'for-candidate', component: ForCadidateComponent },
+  { path: 'all-job', component: ForCadidateComponent },
 
   { path: 'blog', component: BlogComponent },
   { path: 'admin', component: AdminComponent },

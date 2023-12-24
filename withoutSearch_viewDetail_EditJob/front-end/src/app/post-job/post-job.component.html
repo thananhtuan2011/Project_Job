@@ -49,9 +49,16 @@
             <div class="form-container sign-in">
                 <form>
                     <h1 style="font-weight: bold;">***Create Job***</h1>
+                        <div class="row" style="    width: 100%;">
+                                <div class="col-4" style="padding: 0px 10px 0px 0px">
+                                    <input  [(ngModel)]="namejob" [ngModelOptions]="{standalone: true}" type="text" placeholder="Name Job">
+                                </div>
+                                <div class="col-8" style="padding: 0px;">
+                                    <input  [(ngModel)]="namecty" [ngModelOptions]="{standalone: true}" type="text" placeholder="Name company">
+                                </div>
+                        </div>
                 
-                    <input  [(ngModel)]="namejob" [ngModelOptions]="{standalone: true}" type="text" placeholder="Name Job">
-                    <input  [(ngModel)]="namecty" [ngModelOptions]="{standalone: true}" type="text" placeholder="Name company">
+                  
                     <mat-form-field style="width: 100%;" >
                         <mat-label>Location</mat-label>
                         <mat-select style="padding: 20px;
@@ -64,7 +71,9 @@
                           </mat-option>
                         </mat-select>
                       </mat-form-field>
-                        <textarea  [(ngModel)]="note" [ngModelOptions]="{standalone: true}" style="width: 100%;" matInput placeholder="job_description..."></textarea>
+                      <textarea  [(ngModel)]="description" [ngModelOptions]="{standalone: true}" style="width: 100%;" matInput placeholder="Jobs Description..."></textarea>
+                      <textarea  [(ngModel)]="requirement" [ngModelOptions]="{standalone: true}" style="width: 100%;" matInput placeholder="Jobs Requirement..."></textarea>
+                        <textarea  [(ngModel)]="benefit" [ngModelOptions]="{standalone: true}" style="width: 100%;" matInput placeholder="Benefit and Perks..."></textarea>
 
                         <mat-form-field class="example-chip-list" style="width: 100%;">
                           <mat-label>Skill</mat-label>

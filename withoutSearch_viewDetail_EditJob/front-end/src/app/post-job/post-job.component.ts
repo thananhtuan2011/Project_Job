@@ -49,7 +49,10 @@ export class PostJobComponent implements OnInit {
   radiovalue!: any;
   name!: string;
   @ViewChild('container') container: ElementRef | undefined;
-  note!: string;
+  description!: string;
+  requirement!: string;
+  benefit!: string;
+
   namejob!: string;
   namecty!: string
   username!: string;
@@ -90,14 +93,22 @@ export class PostJobComponent implements OnInit {
     }
   }
 
-
+  private _normalizeValue(value: string): string {
+    return value.toLowerCase().replace(/\s/g, '');
+  }
+  private _filterStates(value: string): any[] {
+    // debugger
+    //	const filterValue = value.toLowerCase();
+    const filterValue = this._normalizeValue(value);
+    return this.user_tam.filter(state => this._normalizeValue(state.name).includes(filterValue));
+  }
   GetAllSkill() {
     this.skill_serices.getAllSkills().subscribe(res => {
       this.user_tam = res;
       this.changeDetectorRefs.detectChanges();
       this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
         startWith(null),
-        map((fruit: string | null) => (fruit ? this._filter(fruit) : res.slice())),
+        map((fruit: string | null) => (fruit ? this._filterStates(fruit) : res.slice())),
       );
     })
   }
@@ -164,7 +175,9 @@ export class PostJobComponent implements OnInit {
       maxsalary: this.valuemax,
       createdBy: this.user._id,
       location: this.selectedtype,
-      job_description: this.note,
+      job_description: this.description,
+      jobs_requirement: this.requirement,
+      benefit: this.benefit,
       listSkill: this.fruits
 
 
