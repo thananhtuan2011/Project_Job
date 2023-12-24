@@ -21,12 +21,9 @@ export class NavBarComponent implements OnInit {
   }
 
   sessionCheck() {
-    this.userService.findLoggedUser().then((user) => this.user = user);
   }
 
   logout() {
-    this.userService.logout().then(() => this.router.navigate(['*']))
-      .then(() =>
-        this.userService.findLoggedUser().then((user) => this.user = user));
+
   }
 }

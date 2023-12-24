@@ -4,9 +4,11 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { MatSliderModule } from '@angular/material/slider';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LoginComponent } from './login/login.component';
@@ -28,6 +30,7 @@ import { SkillListComponent } from './skill-list/skill-list.component';
 import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
 import { ViewJobComponent } from './view-job/view-job.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { JobBoardComponent } from './job-board/job-board.component';
 import { SearchFilterPipe } from './job-board/job-board.component';
 import { PostJobComponent } from './post-job/post-job.component';
@@ -44,7 +47,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllTitleComponent } from './all-title/all-title.component';
 import { BlogComponent } from './blog/blog.component';
-
+import { MatAutocompleteSelectedEvent, MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
+import { ActionInsertComponent } from './action-insert/action-insert.component';
+// import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,24 +82,37 @@ import { BlogComponent } from './blog/blog.component';
     RecruiterDashboardComponent,
     routingComponents,
     AllTitleComponent,
-    BlogComponent
+    BlogComponent,
+    ActionInsertComponent
 
   ],
   imports: [
     BrowserModule,
+    MatFormFieldModule,
     MatMenuModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    // PerfectScrollbarModule,
+    MatSliderModule,
+    MatSelectModule,
     HttpClientModule,
     FormsModule,
+    AsyncPipe,
     MatIconModule,
     MatRadioModule,
     MatCardModule,
     MatCheckboxModule,
     CommonModule,
-    MatButtonModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatAutocompleteModule,
   ],
   providers: [
+    // {
+    //   provide: PERFECT_SCROLLBAR_CONFIG,
+    //   useValue: PERFECT_SCROLLBAR_CONFIG
+    // },
     JobListingService,
     UserService,
     SaveJobService,

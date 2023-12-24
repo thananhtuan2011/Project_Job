@@ -59,9 +59,11 @@ export class LoginComponent {
 
     this.userService
       .login(this.username, this.password)
-      .then((obj: any) => {
+      .subscribe((obj: any) => {
+        console.log("ccccc", obj)
         if (obj.status === 'success') {
-          localStorage.setItem("roles", JSON.stringify(obj));
+          localStorage.setItem("roles", JSON.stringify(obj.role));
+          localStorage.setItem("user", JSON.stringify(obj.result));
           this.userService.checklogin$.next(true)
           if (obj.role === 'JobSeeker') {
             this.router.navigate(['home']);
@@ -86,21 +88,7 @@ export class LoginComponent {
         }
       });
 
-    setTimeout(() => {
 
-      this.userService.findLoggedUser()
-        .then((user) => {
-          if (user !== null) {
-            if (user.firstName === undefined) {
-            }
-            localStorage.setItem("user", JSON.stringify(user));
-            this.userService.checklogin$.next(true)
-          } else {
-            console.log('User: null');
-          }
-        });
-
-    }, 200);
   }
 
   register() {
@@ -108,8 +96,8 @@ export class LoginComponent {
 
 
       let item = this.ItemAccount();
-      this.userService.createUser(item).then(res => {
-        if (res.status == true) {
+      this.userService.createUser(item).subscribe(res => {
+        if (res.status == 1) {
           alert("success");
           this.password = item.password
           this.toggleInactiveState();

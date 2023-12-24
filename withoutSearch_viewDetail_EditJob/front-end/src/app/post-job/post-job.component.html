@@ -1,2 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        <title>Chérir Login Page</title>
+    </head>
 
-This is post-job component
+    <body>
+
+      
+        <div class="container" #container>
+            <div class="form-container sign-up">
+                <form>
+                    <h1>Create Account</h1>
+                    <div class="social-icons">
+                        <a href="#" class="icon">
+                            <i class="uil uil-google"></i>
+                        </a>
+
+                        <a href="#" class="icon">
+                            <i class="uil uil-facebook"></i>
+                        </a>
+                        <a href="#" class="icon">
+                            <i class="uil uil-github"></i>
+                        </a>
+                        <a href="#" class="icon">
+                            <i class="uil uil-linkedin"></i>
+                        </a>
+                    </div>
+                    <span>or use your email for registeration</span>
+                    <input  [(ngModel)]="namejob" [ngModelOptions]="{standalone: true}" type="text" placeholder="Firstname">
+                    <input  [(ngModel)]="namecty" [ngModelOptions]="{standalone: true}" type="text" placeholder="Lastname">
+                    <!-- <input  [(ngModel)]="username" [ngModelOptions]="{standalone: true}" type="text" placeholder="Username">
+                    <input  [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password"> -->
+                    <!-- <input *ngIf="radiovalue=='Recruiter'"  [(ngModel)]="email" [ngModelOptions]="{standalone: true}" type="text" placeholder="Email"> -->
+                    <!-- <section class="example-section">
+                        <label class="example-margin">Roles:</label>
+                        <mat-radio-group [(ngModel)]="radiovalue" [ngModelOptions]="{standalone: true}"  (change)="radioChange()">
+                          <mat-radio-button class="example-margin" value="Recruiter">Recruiter</mat-radio-button>
+                          <mat-radio-button class="example-margin" value="JobSeeker">JobSeeker</mat-radio-button>
+                        </mat-radio-group>
+                      </section> -->
+                    <button >Sign up</button>
+                </form>
+            </div>
+
+            <div class="form-container sign-in">
+                <form>
+                    <h1 style="font-weight: bold;">***Create Job***</h1>
+                
+                    <input  [(ngModel)]="namejob" [ngModelOptions]="{standalone: true}" type="text" placeholder="Name Job">
+                    <input  [(ngModel)]="namecty" [ngModelOptions]="{standalone: true}" type="text" placeholder="Name company">
+                    <mat-form-field style="width: 100%;" >
+                        <mat-label>Location</mat-label>
+                        <mat-select style="padding: 20px;
+                        height: 10px !important;
+                     
+                        
+                       "  [(ngModel)]="selectedtype"  [ngModelOptions]="{standalone: true}"  >
+                          <mat-option *ngFor="let item of listLocation" [value]="item.type_name">
+                            {{ item.type_name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                        <textarea  [(ngModel)]="note" [ngModelOptions]="{standalone: true}" style="width: 100%;" matInput placeholder="job_description..."></textarea>
+
+                        <mat-form-field class="example-chip-list" style="width: 100%;">
+                          <mat-label>Skill</mat-label>
+                          <mat-chip-grid style="margin-top: 10px;"  #chipGrid aria-label="Fruit selection">
+                            @for (fruit of fruits; track fruit) {
+                              <mat-chip-row (removed)="remove(fruit)">
+                                {{fruit}}
+                                <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+                                    <img style="margin-top: -5px;
+                                    width: 25px;" src="../../assets/image/remove.png">
+                                </button>
+                              </mat-chip-row>
+                            }
+                          </mat-chip-grid>
+                          <input style="    padding: 10px 15px !important" placeholder="New Skill..." #fruitInput [formControl]="fruitCtrl"
+                            [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            (matChipInputTokenEnd)="add($event)"/>
+                          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                            @for (fruit of filteredFruits | async; track fruit) {
+                              <mat-option [value]="fruit.name">{{fruit.name}}</mat-option>
+                            }
+                          </mat-autocomplete>
+                        </mat-form-field>
+
+                        <mat-card class="example-result-card" style="width: 100%;">
+                         
+                            <mat-card-content>
+                              <h6>Min salary</h6>
+                              <input style="width: 100px !important;"  [(ngModel)]="value" [ngModelOptions]="{standalone: true}" type="number" placeholder="Min salary">
+                              <div class="example-label-container">
+                                <label id="example-name-label" class="example-name-label">Value :</label>
+                                <label class="example-value-label">{{slider.value}} $</label>
+                              </div>
+                              <mat-slider
+                               style="width: 100%;"
+                                  class="example-margin"
+                                  [disabled]="disabled"
+                                  [max]="max"
+                                  [min]="min"
+                                  [step]="step"
+                                  [discrete]="thumbLabel"
+                                  [showTickMarks]="showTicks">
+                                <input  style="width: 100%;" matSliderThumb [(ngModel)]="value" [ngModelOptions]="{standalone: true}" #slider>
+                              </mat-slider>
+                            </mat-card-content>
+                          </mat-card>
+                          <mat-card class="example-result-card" style="width: 100%;">
+                            <mat-card-content>
+                              <h6>Max salary</h6>
+                              <input style="width: 100px !important;"  [(ngModel)]="valuemax" [ngModelOptions]="{standalone: true}" type="number" placeholder="Max salary">
+                              <div class="example-label-container">
+                                <label id="example-name-label" class="example-name-label">Value : </label>
+                                <label class="example-value-label">{{slidermax.value}} $</label>
+                              </div>
+                              <mat-slider
+                               style="width: 100%;"
+                                  class="example-margin"
+                                  [disabled]="disabled"
+                                  [max]="max"
+                                  [min]="min"
+                                  [step]="step"
+                                  [discrete]="thumbLabel"
+                                  [showTickMarks]="showTicks">
+                                <input  style="width: 100%;" matSliderThumb [(ngModel)]="valuemax" [ngModelOptions]="{standalone: true}" #slidermax>
+                              </mat-slider>
+                            </mat-card-content>
+                          </mat-card>
+                        <button (click)="Created()" style="    color: white;
+                        background: lightseagreen; margin-top: 30px;" mat-stroked-button color="primary">Created</button>
+                </form>
+            </div>
+           
+        </div>
+    </body>
+</html>
+

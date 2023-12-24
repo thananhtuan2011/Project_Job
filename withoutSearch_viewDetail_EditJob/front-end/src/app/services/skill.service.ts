@@ -6,15 +6,26 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SkillService {
-  private apiUrl = '/api/skill';
+  apiUrl!: string
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
 
-  getAllSkills(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}`);
+    let base = 'http://localhost:5500';
+
+    this.apiUrl = base + '/api/allskill';
   }
 
-  addSkill(skill: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, skill);
+  // getAllSkills(): Observable<any[]> {
+  //   return this.http.get<any[]>(`${this.apiUrl}`);
+  // }
+
+  getAllSkills() {
+    const url = this.apiUrl;
+    return this.http.get<any>(url);
+
   }
+
+  // addSkill(skill: any): Observable<any> {
+  //   return this.http.post<any>(`${this.apiUrl}`, skill);
+  // }
 }

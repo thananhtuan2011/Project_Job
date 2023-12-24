@@ -27,7 +27,7 @@ export class PersonalInfoComponent implements OnInit {
   socialContact: SocialContact[] = [];
   editMode = false;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   edit() {
     this.editMode = true;
@@ -67,31 +67,31 @@ export class PersonalInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.findLoggedUser()
-      .then((user) => {
-        this.user = user;
-        if (user !== null) {
-          if (user.firstName === undefined) {
-            this.editMode = true;
-          }
-          this.updateId = user._id;
-          this.username = user.username;
-          this.password = user.password;
-          this.firstName = user.firstName;
-          this.lastName = user.lastName;
-          this.email = user.email;
-          this.phone = user.phone;
-          if (user.socialContact.length !== 0) {
-            this.socialContact = user.socialContact;
-            this.facebook = this.socialContact.find((s: SocialContact) => s.socialtype === 'facebook')?.url || '';
-            this.github = this.socialContact.find((s: SocialContact) => s.socialtype === 'github')?.url || '';
-            this.linkedin = this.socialContact.find((s: SocialContact) => s.socialtype === 'linkedin')?.url || '';
-            this.twitter = this.socialContact.find((s: SocialContact) => s.socialtype === 'twitter')?.url || '';
-          }
-          console.log(this.user);
-        } else {
-          console.log('User: null');
-        }
-      });
+    // this.userService.findLoggedUser()
+    //   .then((user) => {
+    //     this.user = user;
+    //     if (user !== null) {
+    //       if (user.firstName === undefined) {
+    //         this.editMode = true;
+    //       }
+    //       this.updateId = user._id;
+    //       this.username = user.username;
+    //       this.password = user.password;
+    //       this.firstName = user.firstName;
+    //       this.lastName = user.lastName;
+    //       this.email = user.email;
+    //       this.phone = user.phone;
+    //       if (user.socialContact.length !== 0) {
+    //         this.socialContact = user.socialContact;
+    //         this.facebook = this.socialContact.find((s: SocialContact) => s.socialtype === 'facebook')?.url || '';
+    //         this.github = this.socialContact.find((s: SocialContact) => s.socialtype === 'github')?.url || '';
+    //         this.linkedin = this.socialContact.find((s: SocialContact) => s.socialtype === 'linkedin')?.url || '';
+    //         this.twitter = this.socialContact.find((s: SocialContact) => s.socialtype === 'twitter')?.url || '';
+    //       }
+    //       console.log(this.user);
+    //     } else {
+    //       console.log('User: null');
+    //     }
+    //   });
   }
 }

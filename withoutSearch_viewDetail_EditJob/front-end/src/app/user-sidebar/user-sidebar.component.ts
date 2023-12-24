@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from '../services/user.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-sidebar',
@@ -11,12 +11,12 @@ export class UserSidebarComponent implements OnInit {
   constructor(private userService: UserService) {
   }
 
-  user:any;
+  user: any;
   editMode = false;
   uploadPicture = true;
   firstName = 'firstName';
   lastName = 'lastName';
-  name:any;
+  name: any;
 
   tagline = 'Add a bio !';
 
@@ -49,23 +49,23 @@ export class UserSidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.findLoggedUser()
-      .then((user) => {
-        this.user = user;
-        if (user !== null) {
-          console.log('Bio : ', this.tagline);
-          if (user.tagline !== undefined ) {
-            this.tagline = user.tagline;
-          }
-          if (user.firstName !== undefined ) {
-            this.firstName = user.firstName;
-          }
-          if (user.lastName !== undefined ) {
-            this.lastName = user.lastName;
-          }
-          
-        }
-      });
+    // this.userService.findLoggedUser()
+    //   .then((user) => {
+    //     this.user = user;
+    //     if (user !== null) {
+    //       console.log('Bio : ', this.tagline);
+    //       if (user.tagline !== undefined ) {
+    //         this.tagline = user.tagline;
+    //       }
+    //       if (user.firstName !== undefined ) {
+    //         this.firstName = user.firstName;
+    //       }
+    //       if (user.lastName !== undefined ) {
+    //         this.lastName = user.lastName;
+    //       }
+
+    //     }
+    //   });
   }
 
 

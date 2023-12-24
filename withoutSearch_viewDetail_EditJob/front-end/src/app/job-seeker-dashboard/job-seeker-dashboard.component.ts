@@ -22,15 +22,15 @@ export class JobSeekerDashboardComponent implements OnInit {
   allApplications: any[] = [];
   recruiters: User[] = [];
   states = ['Ho Chi Minh City',
-  'Ha Noi',
-  'Da Nang',
-  'Hai Phong',
-  'Can Tho',
-  'Bien Hoa',
-  'Nha Trang',
-  'Hue',
-  'Vung Tau',
-  'Qui Nhon'];
+    'Ha Noi',
+    'Da Nang',
+    'Hai Phong',
+    'Can Tho',
+    'Bien Hoa',
+    'Nha Trang',
+    'Hue',
+    'Vung Tau',
+    'Qui Nhon'];
 
   constructor(private router: Router, private jobApplicationService: SaveJobService, private userService: UserService) { }
 
@@ -83,28 +83,32 @@ export class JobSeekerDashboardComponent implements OnInit {
   }
 
   getLoggedInUser() {
-    this.userService.findLoggedUser().then((user: User) => {
-      this.user = user ;
-    }).then(() => {
-      this.userService.findAllUsers().then((users: User[]) => {
-        this.recruiters = users.filter((user) =>
-          user.role === 'Recruiter' && user.requestStatus === 'Verified'
-        );
-      });
-    });
+    // this.userService.findLoggedUser().then((user: User) => {
+    //   this.user = user ;
+    // }).then(() => {
+    //   this.userService.findAllUsers().then((users: User[]) => {
+    //     this.recruiters = users.filter((user) =>
+    //       user.role === 'Recruiter' && user.requestStatus === 'Verified'
+    //     );
+    //   });
+    // });
   }
 
-saveJobId(job: any) {
+  saveJobId(job: any) {
     let jobApplication;
     console.log(job.jobSource);
     if (job.jobSource === 'github') {
-      jobApplication = {dateApplied: new Date(), status: 'save', jobSource: job.jobSource, gitHubJobId: job.id,
-        location: job.location, title: job.title, company: job.company};
+      jobApplication = {
+        dateApplied: new Date(), status: 'save', jobSource: job.jobSource, gitHubJobId: job.id,
+        location: job.location, title: job.title, company: job.company
+      };
     } else {
-      jobApplication = {dateApplied: new Date(), status: 'save', jobSource: job.jobSource, jobPosting: job._id,
-        location: job.location, title: job.title, company: job.company};
+      jobApplication = {
+        dateApplied: new Date(), status: 'save', jobSource: job.jobSource, jobPosting: job._id,
+        location: job.location, title: job.title, company: job.company
+      };
     }
-    this.jobApplicationService.createJobApplication(jobApplication).then(() => this.getJobApplication());
+    // this.jobApplicationService.createJobApplication(jobApplication).then(() => this.getJobApplication());
   }
 
   deleteJobId(job: any) {
@@ -121,7 +125,7 @@ saveJobId(job: any) {
   }
 
   applyJob(job: any) {
-    let jobApplication:any;
+    let jobApplication: any;
     console.log(job.jobSource);
     if (job.jobSource === 'github') {
       jobApplication = {
@@ -142,8 +146,8 @@ saveJobId(job: any) {
       id = job._id;
     }
 
-    this.jobApplicationService.deleteJobApplicationByJobPosting(id, job.jobSource).then(() =>
-      this.jobApplicationService.createJobApplication(jobApplication).then(() => this.getJobApplication())
-    );
+    //   this.jobApplicationService.deleteJobApplicationByJobPosting(id, job.jobSource).then(() =>
+    //     // this.jobApplicationService.createJobApplication(jobApplication).then(() => this.getJobApplication())
+    //   // );
   }
 }

@@ -9,7 +9,7 @@ export class UserService {
 
   url: string;
   urlRegister: string;
-  urlLoggedUser: string;
+  // urlLoggedUser: string;
   urlLoggedRecruiter: string;
   urlUpdateProfile: string;
   urlLogin: string;
@@ -29,7 +29,7 @@ export class UserService {
 
     this.url = base + '/api/user';
     this.urlRegister = base + '/api/register';
-    this.urlLoggedUser = base + '/api/profile';
+    // this.urlLoggedUser = base + '/api/profile';
     this.urlLoggedRecruiter = base + '/api/profile/recruiter';
     this.urlUpdateProfile = base + '/api/profile';
     this.urlLogin = base + '/api/login';
@@ -62,22 +62,27 @@ export class UserService {
   }
 
 
-  login(username: any, password: any) {
-    return fetch(this.urlLogin, {
-      method: 'POST',
-      body: JSON.stringify({ username: username, password: password }),
-      credentials: 'include',
-      headers: {
-        'content-type': 'application/json'
-      }
-    }).then(response => {
-      if (response.headers.get('content-type') != null) {
-        return response.json();
-      } else {
-        return null;
-      }
-    });
+  login(usname: any, pass: any) {
+    let item = {
+      username: usname,
+      password: pass
+    }
+    const url = this.urlLogin;
+    return this._http.post<any>(url, item);
+
   }
+  //   return fetch(this.urlLogin, {
+  //     method: 'POST',
+  //     body: JSON.stringify({ username: username, password: password }),
+
+  //   }).then(response => {
+  //     if (response.headers.get('content-type') != null) {
+  //       return response.json();
+  //     } else {
+  //       return null;
+  //     }
+  //   });
+  // }
 
 
   logout() {
@@ -87,17 +92,17 @@ export class UserService {
     });
   }
 
-  findLoggedUser() {
-    return fetch(this.urlLoggedUser, {
-      credentials: 'include',
-    }).then(response => {
-      if (response.headers.get('content-type') != null) {
-        return response.json();
-      } else {
-        return null;
-      }
-    });
-  }
+  // findLoggedUser() {
+  //   return fetch(this.urlLoggedUser, {
+  //     credentials: 'include',
+  //   }).then(response => {
+  //     if (response.headers.get('content-type') != null) {
+  //       return response.json();
+  //     } else {
+  //       return null;
+  //     }
+  //   });
+  // }
   findLoggedRecruiter() {
     return fetch(this.urlLoggedRecruiter, {
       credentials: 'include',
@@ -135,20 +140,9 @@ export class UserService {
   }
 
   createUser(user: any) {
-    return fetch(this.url, {
-      method: 'POST',
-      body: JSON.stringify(user),
-      credentials: 'include',
-      headers: {
-        'content-type': 'application/json'
-      }
-    }).then(response => {
-      if (response.headers.get('content-type') != null) {
-        return response.json();
-      } else {
-        return null;
-      }
-    });
+    const url = this.urlRegister;
+    return this._http.post<any>(url, user);
+
   }
 
   approveRecruiter(userId: any) {

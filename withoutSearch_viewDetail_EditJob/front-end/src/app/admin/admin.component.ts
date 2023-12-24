@@ -50,14 +50,14 @@ export class AdminComponent implements OnInit {
       }
     );
 
-    this.userService.findLoggedUser().then(
-      (user: any) => {
-        this.currentAdmin = user;
-      },
-      (error: any) => {
-        console.error('Error fetching logged user:', error);
-      }
-    );
+    // this.userService.findLoggedUser().then(
+    //   (user: any) => {
+    //     this.currentAdmin = user;
+    //   },
+    //   (error: any) => {
+    //     console.error('Error fetching logged user:', error);
+    //   }
+    // );
   }
 
   approveUser(id: any) {
@@ -82,7 +82,7 @@ export class AdminComponent implements OnInit {
 
   // deleteAdmin(userId: any) {
   //   const confirmDelete = window.confirm('Are you sure you want to delete this admin?');
-  
+
   //   if (confirmDelete) {
   //     this.userService.deleteUser(userId)
   //       .then(() => {
@@ -95,20 +95,20 @@ export class AdminComponent implements OnInit {
   //   }
   // }
 
-  deleteAdmin(id:any) {
+  deleteAdmin(id: any) {
     this.userService.deleteUser(id).then(() => this.findAllUsers());
   }
 
-  createAdmin(username:any, password:any) {
+  createAdmin(username: any, password: any) {
 
     const role = 'Admin';
-    this.userService.createUser({username, password, role}).then((res) => {
-      if (res.status === true) {
-        this.findAllUsers();
-        this.usernameExists = false;
-      } else {
-        this.usernameExists = true;
-      }
-    });
+    // this.userService.createUser({username, password, role}).then((res) => {
+    //   if (res.status === true) {
+    //     this.findAllUsers();
+    //     this.usernameExists = false;
+    //   } else {
+    //     this.usernameExists = true;
+    //   }
+    // });
   }
 }

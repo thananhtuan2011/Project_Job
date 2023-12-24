@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../services/user.service';
-import {RecruiterDetailService} from '../services/recruiter-detail.service';
+import { UserService } from '../services/user.service';
+import { RecruiterDetailService } from '../services/recruiter-detail.service';
 interface SocialContact {
   socialtype: string;
   url: string;
@@ -12,14 +12,14 @@ interface SocialContact {
 })
 export class ProfileRecruiterComponent implements OnInit {
 
-  user:any;
-  recruiter:any;
+  user: any;
+  recruiter: any;
   updateId = '';
   updateRecruiterId = '';
   username = '';
   password = '';
   firstName = '';
-  lastName =  '';
+  lastName = '';
   title = '';
   company = '';
   email = '';
@@ -32,7 +32,7 @@ export class ProfileRecruiterComponent implements OnInit {
   socialContact: SocialContact[] = [];
   editMode = false;
   constructor(private userService: UserService,
-              private  recruiterService: RecruiterDetailService) {
+    private recruiterService: RecruiterDetailService) {
   }
 
   edit() {
@@ -45,10 +45,10 @@ export class ProfileRecruiterComponent implements OnInit {
 
   update() {
     const social = [
-      {'socialtype' : 'github', 'url' : this.github},
-      {'socialtype' : 'linkedin', 'url' : this.linkedin},
-      {'socialtype' : 'facebook', 'url' : this.facebook},
-      {'socialtype' : 'twitter', 'url' : this.twitter}
+      { 'socialtype': 'github', 'url': this.github },
+      { 'socialtype': 'linkedin', 'url': this.linkedin },
+      { 'socialtype': 'facebook', 'url': this.facebook },
+      { 'socialtype': 'twitter', 'url': this.twitter }
     ];
     const updateduser = {
       'username': this.username,
@@ -57,11 +57,11 @@ export class ProfileRecruiterComponent implements OnInit {
       'lastName': this.lastName,
       'email': this.email,
       'phone': this.phone,
-      'socialContact' : social
+      'socialContact': social
     };
     const recruiter = {
-      'title' : this.title,
-      'company' : this.company
+      'title': this.title,
+      'company': this.company
     };
     console.log('Update ID : ', this.updateId);
     console.log('Update as : ', updateduser);
@@ -75,7 +75,7 @@ export class ProfileRecruiterComponent implements OnInit {
       });
   }
 
-  checkHidden(url:string) {
+  checkHidden(url: string) {
     if (url === '') {
       return true;
     } else {
@@ -84,45 +84,45 @@ export class ProfileRecruiterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.findLoggedUser()
-      .then((user) => {
-        this.user = user;
-        if (user !== null ) {
-          if ( user.firstName === undefined) {
-            this.editMode = true;
-          }
-          this.updateId = user._id;
-          this.username = user.username;
-          this.password = user.password;
-          this.firstName = user.firstName;
-          this.lastName = user.lastName;
-          this.email = user.email;
-          this.phone = user.phone;
-          console.log('Request : ', user.requestStatus);
-          this.requestStatus = user.requestStatus;
-          if (user.socialContact.length !== 0 ) {
-            this.socialContact = user.socialContact;
-            this.facebook = this.socialContact.find((s: SocialContact) => s.socialtype === 'facebook')?.url || '';
-            this.github = this.socialContact.find((s: SocialContact) => s.socialtype === 'github')?.url || '';
-            this.linkedin = this.socialContact.find((s: SocialContact) => s.socialtype === 'linkedin')?.url || '';
-            this.twitter = this.socialContact.find((s: SocialContact) => s.socialtype === 'twitter')?.url || '';
-          }
-          console.log(this.user);
-          this.recruiterService.findRecruiterDetailsByUserId()
-            .then((recruiter) => {
-              console.log('Recruiter ID', recruiter);
-              this.updateRecruiterId = recruiter._id;
-              if (recruiter.title !== undefined) {
-                this.title = recruiter.title;
-              }
-              if (recruiter.company !== undefined) {
-                this.company = recruiter.company;
-              }
-            });
-        } else {
-          console.log('User : null');
-        }
-      });
+    // this.userService.findLoggedUser()
+    //   .then((user) => {
+    //     this.user = user;
+    //     if (user !== null ) {
+    //       if ( user.firstName === undefined) {
+    //         this.editMode = true;
+    //       }
+    //       this.updateId = user._id;
+    //       this.username = user.username;
+    //       this.password = user.password;
+    //       this.firstName = user.firstName;
+    //       this.lastName = user.lastName;
+    //       this.email = user.email;
+    //       this.phone = user.phone;
+    //       console.log('Request : ', user.requestStatus);
+    //       this.requestStatus = user.requestStatus;
+    //       if (user.socialContact.length !== 0 ) {
+    //         this.socialContact = user.socialContact;
+    //         this.facebook = this.socialContact.find((s: SocialContact) => s.socialtype === 'facebook')?.url || '';
+    //         this.github = this.socialContact.find((s: SocialContact) => s.socialtype === 'github')?.url || '';
+    //         this.linkedin = this.socialContact.find((s: SocialContact) => s.socialtype === 'linkedin')?.url || '';
+    //         this.twitter = this.socialContact.find((s: SocialContact) => s.socialtype === 'twitter')?.url || '';
+    //       }
+    //       console.log(this.user);
+    //       this.recruiterService.findRecruiterDetailsByUserId()
+    //         .then((recruiter) => {
+    //           console.log('Recruiter ID', recruiter);
+    //           this.updateRecruiterId = recruiter._id;
+    //           if (recruiter.title !== undefined) {
+    //             this.title = recruiter.title;
+    //           }
+    //           if (recruiter.company !== undefined) {
+    //             this.company = recruiter.company;
+    //           }
+    //         });
+    //     } else {
+    //       console.log('User : null');
+    //     }
+    //   });
   }
 
 }

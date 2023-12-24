@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Job} from '../models/Job';
-import {ActivatedRoute} from '@angular/router';
-import {JobListingService} from '../services/job-listing.service';
-import {SaveJobService} from '../services/save-job.service';
-import {UserService} from '../services/user.service';
-import {User} from '../models/user.model.client';
-import {JobPostingService} from '../services/job-posting.service';
-import {JobPostingModelClient} from '../models/job-posting.model.client';
+import { Component, OnInit } from '@angular/core';
+import { Job } from '../models/Job';
+import { ActivatedRoute } from '@angular/router';
+import { JobListingService } from '../services/job-listing.service';
+import { SaveJobService } from '../services/save-job.service';
+import { UserService } from '../services/user.service';
+import { User } from '../models/user.model.client';
+import { JobPostingService } from '../services/job-posting.service';
+import { JobPostingModelClient } from '../models/job-posting.model.client';
 
 @Component({
   selector: 'app-view-job',
@@ -14,7 +14,7 @@ import {JobPostingModelClient} from '../models/job-posting.model.client';
   styleUrls: ['./view-job.component.css']
 })
 export class ViewJobComponent implements OnInit {
-  
+
   job: JobPostingModelClient = new JobPostingModelClient();
   // jobs: JobPostingModelClient[] = [];
   jobId: string = " ";
@@ -52,40 +52,40 @@ export class ViewJobComponent implements OnInit {
     });
 
     if (this.jobId != null) {
-      this.userService.findLoggedUser().then((user) => {
-        this.user = user;
-        console.log('Logged User:', this.user);
+      // this.userService.findLoggedUser().then((user) => {
+      //   this.user = user;
+      //   console.log('Logged User:', this.user);
 
-        this.jobService.findAllJobs().then(jobs => {
-          console.log('All Jobs:', jobs);
-          for (const j in jobs) {
-            if (jobs[j].id === this.jobId) {
-              const d = new Date(jobs[j].created_at);
-              this.job = jobs[j];
-              this.job.jobSource = this.jobSource;
-              this.job.created_at = d.toDateString();
-            }
-          }
-          console.log('Fetched Job:', this.job);
-        }).then(() => jobPosting.getAllJobPostings().then((postings) => {
-          console.log('All Job Postings:', postings);
-          this.postings = postings;
-          this.postings.forEach((posting: any) => {
-            if (posting._id === this.jobId) {
-              this.job = posting;
-              this.job.jobSource = this.jobSource;
-              this.job.datePosted = new Date(posting.datePosted);
-            }
-          });
-        }).then(() => this.getJobApplication()));
-      });
+      //   this.jobService.findAllJobs().then(jobs => {
+      //     console.log('All Jobs:', jobs);
+      //     for (const j in jobs) {
+      //       if (jobs[j].id === this.jobId) {
+      //         const d = new Date(jobs[j].created_at);
+      //         this.job = jobs[j];
+      //         this.job.jobSource = this.jobSource;
+      //         this.job.created_at = d.toDateString();
+      //       }
+      //     }
+      //     console.log('Fetched Job:', this.job);
+      //   }).then(() => jobPosting.getAllJobPostings().then((postings) => {
+      //     console.log('All Job Postings:', postings);
+      //     this.postings = postings;
+      //     this.postings.forEach((posting: any) => {
+      //       if (posting._id === this.jobId) {
+      //         this.job = posting;
+      //         this.job.jobSource = this.jobSource;
+      //         this.job.datePosted = new Date(posting.datePosted);
+      //       }
+      //     });
+      //   }).then(() => this.getJobApplication()));
+      // });
     }
   }
 
   getJobApplication() {
     console.log('Inside getJobApplication');
     this.saveJobService.getAllJobApplicationForUser().then((jobApplications) => {
-      if (jobApplications.status != null &&  jobApplications.status === 'session expired') {
+      if (jobApplications.status != null && jobApplications.status === 'session expired') {
         this.jobApplications = [];
       } else {
         this.jobApplications = jobApplications;
@@ -134,11 +134,10 @@ export class ViewJobComponent implements OnInit {
         company: job.company
       };
     }
-  
+
     this.alreadySavedCheck = false;
     this.alreadyAppliedCheck = false;
-  
-    this.saveJobService.createJobApplication(jobApplication).then(() => this.getJobApplication());
+
   }
 
   deleteJobId(job: any) {
@@ -157,11 +156,15 @@ export class ViewJobComponent implements OnInit {
     let jobApplication: any;
     console.log(job.jobSource);
     if (job.jobSource === 'github') {
-      jobApplication = {dateApplied: new Date(), status: 'applied', jobSource: job.jobSource, gitHubJobId: job.id,
-        location: job.location, title: job.title, company: job.company};
+      jobApplication = {
+        dateApplied: new Date(), status: 'applied', jobSource: job.jobSource, gitHubJobId: job.id,
+        location: job.location, title: job.title, company: job.company
+      };
     } else {
-      jobApplication = {dateApplied: new Date(), status: 'applied', jobSource: job.jobSource, jobPosting: job._id,
-        location: job.location, title: job.title, company: job.company};
+      jobApplication = {
+        dateApplied: new Date(), status: 'applied', jobSource: job.jobSource, jobPosting: job._id,
+        location: job.location, title: job.title, company: job.company
+      };
     }
 
     let id;
@@ -174,8 +177,6 @@ export class ViewJobComponent implements OnInit {
     this.alreadySavedCheck = false;
     this.alreadyAppliedCheck = false;
 
-    this.saveJobService.deleteJobApplicationByJobPosting(id, job.jobSource).then(() =>
-      this.saveJobService.createJobApplication(jobApplication).then(() => this.getJobApplication()));
   }
 
 
@@ -210,9 +211,9 @@ export class ViewJobComponent implements OnInit {
 
   updateJob(id: any, job: any) {
     console.log(job);
-      this.jobPosting.updateJobPosting(id, job).then(() => this.getJobApplication() );
+    this.jobPosting.updateJobPosting(id, job).then(() => this.getJobApplication());
   }
-  checkHidden(url:string) {
+  checkHidden(url: string) {
     if (url === '') {
       return true;
     } else {

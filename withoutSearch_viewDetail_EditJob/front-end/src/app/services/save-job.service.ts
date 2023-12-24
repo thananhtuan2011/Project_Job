@@ -1,34 +1,39 @@
-import {Injectable} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SaveJobService {
 
-  url: string;
+  url: string = "";
 
-  constructor() {
+  constructor(private _http: HttpClient) {
     let base = 'http://localhost:5500';
 
-    this.url = base + '/api/jobApplication';
+    this.url = base + '/api/createdJob';
   }
+  createJobApplication(user: any) {
+    const url = this.url;
+    return this._http.post<any>(url, user);
 
-  createJobApplication(jobApplication: any) {
-    return fetch(this.url, {
-      method: 'POST',
-      body: JSON.stringify(jobApplication),
-      credentials: 'include',
-      headers: {
-        'content-type': 'application/json'
-      }
-    }).then(response => {
-      if (response.headers.get('content-type') != null) {
-        return response.json();
-      } else {
-        return null;
-      }
-    });
   }
+  // createJobApplication(jobApplication: any) {
+  //   return fetch(this.url, {
+  //     method: 'POST',
+  //     body: JSON.stringify(jobApplication),
+  //     credentials: 'include',
+  //     headers: {
+  //       'content-type': 'application/json'
+  //     }
+  //   }).then(response => {
+  //     if (response.headers.get('content-type') != null) {
+  //       return response.json();
+  //     } else {
+  //       return null;
+  //     }
+  //   });
+  // }
 
   updateJobApplication(jobApplicationId: any, jobApplication: any) {
     return fetch(this.url + '/' + jobApplicationId, {

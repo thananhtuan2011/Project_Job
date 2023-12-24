@@ -15,6 +15,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ForCadidateComponent } from './for-cadidate/for-cadidate.component';
 import { AllTitleComponent } from './all-title/all-title.component';
 import { BlogComponent } from './blog/blog.component';
+import { ActionInsertComponent } from './action-insert/action-insert.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,8 @@ const routes: Routes = [
   { path: 'all-skill', component: RecruiterDashboardComponent },
   { path: 'all-title', component: AllTitleComponent },
   { path: 'abount', component: AboutUsComponent },
+  { path: 'action', component: ActionInsertComponent },
+
   { path: 'dashboard-seeker', component: JobSeekerDashboardComponent },
   { path: 'job-list/:location/:keyword/view-job/:jobId', component: ViewJobComponent },
   { path: 'dashboard-seeker/view-job/:jobId', component: ViewJobComponent },

@@ -69,7 +69,7 @@ export class ExperienceListComponent implements OnInit {
   description = '';
   updateId = '';
 
-  constructor(private userService: UserService, private experienceService: ExperienceService) {}
+  constructor(private userService: UserService, private experienceService: ExperienceService) { }
 
   edit(experience: Experience, updateId: string) {
     if (experience.ongoingStatus === undefined) {
@@ -132,13 +132,13 @@ export class ExperienceListComponent implements OnInit {
       ongoingStatus: this.defaultAddOnGoing,
       description: this.description
     };
-  
+
     this.experienceService.createExperience(newExperience).then((response) => {
       this.experienceService.findExperienceByUserId().then((experiences) => {
         this.experiences = experiences;
       });
     });
-  
+
     this.addMode = false;
   }
 
@@ -161,7 +161,7 @@ export class ExperienceListComponent implements OnInit {
       ongoingStatus: this.ongoingStatus,
       description: this.description
     };
-  
+
     this.editMode = false;
     this.experienceService.updateExperience(this.updateId, updatedExperience).then((response) => {
       this.experienceService.findExperienceByUserId().then((experiences) => {
@@ -179,13 +179,13 @@ export class ExperienceListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.findLoggedUser().then((user) => {
-      this.user = user;
-      if (user !== null) {
-        this.experienceService.findExperienceByUserId().then((experiences) => {
-          this.experiences = experiences;
-        });
-      }
-    });
+    // this.userService.findLoggedUser().then((user) => {
+    //   this.user = user;
+    //   if (user !== null) {
+    //     this.experienceService.findExperienceByUserId().then((experiences) => {
+    //       this.experiences = experiences;
+    //     });
+    //   }
+    // });
   }
 }

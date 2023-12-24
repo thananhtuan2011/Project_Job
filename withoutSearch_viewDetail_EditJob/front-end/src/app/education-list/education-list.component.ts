@@ -62,20 +62,20 @@ export class EducationListComponent implements OnInit {
   updateId: string = '';
   education: Education[] = [];
 
-  constructor(private userService: UserService, private educationService: EducationService) {}
+  constructor(private userService: UserService, private educationService: EducationService) { }
 
   ngOnInit() {
-    this.userService.findLoggedUser()
-      .then((user: any) => {
-        this.user = user;
-        if (user !== null) {
-          this.educationService.findEducationByUserId()
-            .then((educationArray: Education[]) => {
-              console.log('educations array : ', educationArray);
-              this.education = educationArray;
-            });
-        }
-      });
+    // this.userService.findLoggedUser()
+    //   .then((user: any) => {
+    //     this.user = user;
+    //     if (user !== null) {
+    //       this.educationService.findEducationByUserId()
+    //         .then((educationArray: Education[]) => {
+    //           console.log('educations array : ', educationArray);
+    //           this.education = educationArray;
+    //         });
+    //     }
+    //   });
   }
 
   edit(education: Education, updateId: string) {
