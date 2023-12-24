@@ -166,6 +166,9 @@ export class PostJobComponent implements OnInit {
   Created() {
 
 
+
+
+
     let date = new Date()
     let item = {
       namejob: this.namejob,
@@ -188,6 +191,7 @@ export class PostJobComponent implements OnInit {
         alert("Thành công")
       }
     })
+
   }
 
 }

@@ -8,12 +8,16 @@ import { UserService } from '../services/user.service';
 })
 export class HeaderComponent implements OnInit {
   user: any
+  roles: any
   constructor(private userService: UserService) {
     this.user = JSON.parse(localStorage.getItem("user")!);
+    this.roles = JSON.parse(localStorage.getItem("roles")!);
   }
   logout() {
     localStorage.removeItem("user");
+    localStorage.removeItem("roles");
     this.user = undefined
+    this.roles = undefined
   }
   ngOnInit(): void {
 
@@ -21,6 +25,7 @@ export class HeaderComponent implements OnInit {
       console.log("check", res)
       if (res == true) {
         this.user = JSON.parse(localStorage.getItem("user")!);
+        this.roles = JSON.parse(localStorage.getItem("roles")!);
       }
     })
   }

@@ -60,7 +60,6 @@ export class LoginComponent {
     this.userService
       .login(this.username, this.password)
       .subscribe((obj: any) => {
-        console.log("ccccc", obj)
         if (obj.status === 'success') {
           localStorage.setItem("roles", JSON.stringify(obj.role));
           localStorage.setItem("user", JSON.stringify(obj.result));

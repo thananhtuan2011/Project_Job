@@ -23,7 +23,7 @@
                           <li><a routerLink="/all-skill" class="dropdown-item" href="javascript:;">Job by skill</a></li>
                           <li><a routerLink="/all-title" class="dropdown-item" hhref="javascript:;">Job by title</a></li>
                         </ul> -->
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" >
                   <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     For Candidate
                   </a>
@@ -44,7 +44,7 @@
                   </ul>
               </li>
                  <!-- <a  routerLinkActive="menu-item-active"  routerLink="/dashboard-recruiter" class="nav-item nav-link itemcontent" href="javascript:;">For Recruiter</a> -->
-                 <li class="nav-item dropdown">
+                 <li class="nav-item dropdown" *ngIf="roles=='Admin'|| roles=='Recruiter'">
                   <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     For Recruiter
                   </a>
