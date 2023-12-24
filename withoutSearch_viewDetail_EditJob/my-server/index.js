@@ -67,7 +67,8 @@ app.post("/api/login", cors(), async (req, res) => {
 
 });
 app.post("/api/register", cors(), async (req, res) => {
-  const checkdata = await AccountCollection.findOne({ email: req.body.username })
+  const checkdata = await AccountCollection.findOne({ username: req.body.username })
+  console
   if (checkdata) {
     let data = {
       status: 0
