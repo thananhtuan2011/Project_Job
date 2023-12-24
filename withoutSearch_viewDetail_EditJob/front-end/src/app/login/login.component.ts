@@ -68,9 +68,9 @@ export class LoginComponent {
           if (obj.role === 'JobSeeker') {
             this.router.navigate(['home']);
           } else if (obj.role === 'Admin') {
-            this.router.navigate(['admin']);
+            this.router.navigate(['home']);
           } else {
-            this.router.navigate(['profile-recruiter']);
+            this.router.navigate(['home']);
           }
           // if (user.username === 'admin') {
           //   this.router.navigate(['admin']);

@@ -105,8 +105,8 @@
                               <h6>Min salary</h6>
                               <input style="width: 100px !important;"  [(ngModel)]="value" [ngModelOptions]="{standalone: true}" type="number" placeholder="Min salary">
                               <div class="example-label-container">
-                                <label id="example-name-label" class="example-name-label">Value :</label>
-                                <label class="example-value-label">{{slider.value}} $</label>
+                                <label style="padding-right: 5px;" id="example-name-label" class="example-name-label">Value: </label>
+                                <label class="example-value-label">${{slider.value}} </label>
                               </div>
                               <mat-slider
                                style="width: 100%;"
@@ -126,8 +126,8 @@
                               <h6>Max salary</h6>
                               <input style="width: 100px !important;"  [(ngModel)]="valuemax" [ngModelOptions]="{standalone: true}" type="number" placeholder="Max salary">
                               <div class="example-label-container">
-                                <label id="example-name-label" class="example-name-label">Value : </label>
-                                <label class="example-value-label">{{slidermax.value}} $</label>
+                                <label style="padding-right: 5px;" id="example-name-label" class="example-name-label">Value: </label>
+                                <label class="example-value-label"> ${{slidermax.value}} </label>
                               </div>
                               <mat-slider
                                style="width: 100%;"
@@ -143,7 +143,7 @@
                             </mat-card-content>
                           </mat-card>
                         <button (click)="Created()" style="    color: white;
-                        background: lightseagreen; margin-top: 30px;" mat-stroked-button color="primary">Created</button>
+                        background: rgb(29, 30, 30); margin-top: 30px;border-radius: 5px;" mat-stroked-button color="primary">CREATE</button>
                 </form>
             </div>
            

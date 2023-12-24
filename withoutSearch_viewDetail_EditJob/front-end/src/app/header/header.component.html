@@ -3,7 +3,8 @@
 ">
 
     <div   routerLink="/home" class="col-2" style="color: red;cursor: pointer;">
-       <h2> It hunter</h2>
+       <!-- <h2> It hunter</h2> -->
+       <img style="    width: 200px;" src="../../assets/image/logohunter.jpg">
     </div>
 
     <div class=" col-10">
@@ -16,15 +17,12 @@
               <div class="navbar-nav" style="justify-content: space-between;">
                        <a  routerLinkActive="menu-item-active"  routerLink="/abount"  class="nav-item nav-link itemcontent" href="javascript:;">About us </a>
                        <a  routerLinkActive="menu-item-active"  routerLink="/blog"  class="nav-item nav-link itemcontent" href="javascript:;">Blog </a>
-                       <li class="nav-item dropdown">
-                        <a routerLink="/all-job"  class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                       All Job
-                        </a>
-                        <ul class="dropdown-menu">
+                      
+                        <a  routerLinkActive="menu-item-active"   routerLink="/all-job"  class="nav-item nav-link itemcontent" href="javascript:;">  All Job </a>
+                        <!-- <ul class="dropdown-menu">
                           <li><a routerLink="/all-skill" class="dropdown-item" href="javascript:;">Job by skill</a></li>
                           <li><a routerLink="/all-title" class="dropdown-item" hhref="javascript:;">Job by title</a></li>
-                        </ul>
-                    </li>
+                        </ul> -->
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     For Candidate
@@ -57,9 +55,10 @@
                   </ul>
               </li>
                 <a class="nav-item nav-link itemcontent " href="javascript:;">Contact us </a>
-                <li class="nav-item dropdown" *ngIf="user"  >
-                  <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{user.lastName}} {{user.firstName}}
+                <li class="nav-item dropdown" *ngIf="user">
+                 
+                  <a style="font-weight: bold; color: red; margin-top: -10px;" class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="../../assets/image/iconuserhunter.png">   {{user.lastName}} {{user.firstName}}
                   </a>
                   <ul class="dropdown-menu">
                     <li><a (click)="logout()" class="dropdown-item" href="javascript:;">Logout</a></li>
