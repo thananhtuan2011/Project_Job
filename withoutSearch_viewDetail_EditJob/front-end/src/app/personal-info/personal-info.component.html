@@ -1,5 +1,5 @@
-<div class="card rounded ">
-    <div class="card-header">
+<div >
+    <div >
       <button class="btn btn-outline-primary rounded float-right"
               [disabled]=editMode
               (click)="edit()">
@@ -7,9 +7,41 @@
       <h3 [hidden]="editMode"> Personal Information </h3>
       <h3 [hidden]="!editMode" style="color:orange"> Update Personal Information </h3>
     </div>
+    <div class="card">
+      <div class="left-container">
+        <img src="https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358__480.jpg" alt="Profile Image">
+        <h2 class="gradienttext">John Doe</h2>
+        <p>Web Developer</p>
+      </div>
+      <div class="right-container">
+        <h3 class="gradienttext">Profile</h3>
+        <table>
+            <tr>
+                <td>Name :</td>
+                <td>John Doe</td>
+              </tr>
+          <tr>
+            <td>Age :</td>
+            <td>35</td>
+          </tr>
+          <tr>
+            <td>Mobile :</td>
+            <td>+91 XXXXXXXXXX</td>
+          </tr>
+          <tr>
+            <td>Email :</td>
+            <td>sssss</td>
+          </tr>
+          <tr>
+            <td>Address :</td>
+            <td>123 Main St, Anytown, USA</td>
+          </tr>
+        </table>
+        <div class="credit">Made with <span style="color:tomato;font-size:20px;">❤ </span>by<a href="https://www.learningrobo.com/"> Learning Robo</a></div>
+      </div>
+    </div>
     <ul class="list-group">
       <li class="list-group-item" style="font-size: 24px;" [hidden]="editMode">
-        <!--<i class="float-right btn btn-light fas fa-angle-down"></i>-->
         <span style="font-weight: bold; font-size: 26px;">
           {{firstName}} {{lastName}}
           <br/>
@@ -17,20 +49,15 @@
         <span style="font-style: italic; color: grey;">
           <b>Username :</b> {{username}}
         <br/>
-          <!--<b>Password :</b> {{password}}-->
-          <!--<br/>-->
+        
         </span>
         <span>
-          <!--FirstName :-->
-          <!--<br/>-->
-          <!--LastName :-->
-          <!--<br/>-->
+        
           <i class="fas fa-envelope"></i> {{email}}
           <br/>
           <i class="fas fa-phone"></i>&nbsp;{{phone}}
           <br/>
           <hr/>
-          <!--<a href="#"><i class="fab fa-facebook fa-2x"></i></a> &nbsp;-->
         </span>
         <span>
           <a [hidden]="checkHidden(linkedin)" href={{linkedin}} target="_blank"><i class="fab fa-linkedin fa-2x"></i></a> &nbsp;
@@ -43,7 +70,6 @@
         <form>
           <div class="form-group row mx-2 mt-2">
   
-            <!--Username-->
             <label for="username" class="text-center col-form-label">
               Username</label>
             <input [ngModelOptions]="{standalone: true}"
@@ -52,17 +78,6 @@
                    class="form-control"
                    placeholder="Username">
   
-            <!--&lt;!&ndash;Password&ndash;&gt;-->
-            <!--<label for="password" class="text-center col-form-label">-->
-              <!--Password</label>-->
-            <!--<input [ngModelOptions]="{standalone: true}"-->
-                   <!--[(ngModel)]="password"-->
-                   <!--id="password"-->
-                   <!--class="form-control"-->
-                   <!--placeholder="Password"-->
-                   <!--disabled>-->
-  
-            <!--First Name-->
             <label for="firstname" class="text-center col-form-label">
               First Name</label>
             <input [ngModelOptions]="{standalone: true}"
@@ -71,7 +86,6 @@
                    class="form-control"
                    placeholder="First Name">
   
-            <!--Last Name-->
             <label for="lastname" class="text-center col-form-label">
               Last Name</label>
             <input [ngModelOptions]="{standalone: true}"
@@ -80,7 +94,6 @@
                    class="form-control"
                    placeholder="Last Name">
   
-            <!--email-->
             <label for="email" class="text-center col-form-label">
               Email</label>
             <div class="input-group mb-2">
@@ -96,7 +109,6 @@
                      placeholder="abc@xyz.com">
             </div>
   
-            <!--phone-->
             <label for="phone" class="text-center col-form-label">
               Phone</label>
             <div class="input-group mb-2">
@@ -112,9 +124,7 @@
                      placeholder="(555) 111-2222">
             </div>
   
-            <!--Social contacts-->
   
-            <!--linkedin-->
             <label class="text-center col-form-label" for="in">LinkedIn</label>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -127,7 +137,6 @@
                      [(ngModel)]="linkedin">
             </div>
   
-            <!--github-->
             <label class="text-center col-form-label" for="github">Github</label>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -140,7 +149,6 @@
                      [(ngModel)]="github">
             </div>
   
-            <!--twitter-->
             <label class="text-center col-form-label" for="tweet">Twitter</label>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
@@ -153,7 +161,6 @@
                      [(ngModel)]="twitter">
             </div>
   
-            <!--Facebook-->
             <label class="text-center col-form-label" for="fb">Facebook</label>
             <div class="input-group mb-2">
               <div class="input-group-prepend">

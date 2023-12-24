@@ -67,7 +67,7 @@ body {
   overflow: hidden;
   width: 768px;
   max-width: 100%;
-  min-height: 480px;
+  min-height: 600px;
 }
 
 .container p {
@@ -89,7 +89,7 @@ body {
 }
 
 .container button {
-  background-color: #e7d6ff;
+  background-color: #a075dc;
   color: #fff;
   font-size: 12px;
   padding: 10px 45px;

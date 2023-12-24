@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { catchError, map, Observable, retry, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, retry, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +22,9 @@ export class UserService {
   urlRecruiterProfile: string;
   urlPremiumGrant: string;
   urlPremiumRevoke: string;
-
+  public checklogin$ = new BehaviorSubject<any>(false);
   constructor(private _http: HttpClient) {
-    
+
     let base = 'http://localhost:5500';
 
     this.url = base + '/api/user';
@@ -62,10 +62,10 @@ export class UserService {
   }
 
 
-  login(username:any, password:any) {
+  login(username: any, password: any) {
     return fetch(this.urlLogin, {
       method: 'POST',
-      body: JSON.stringify({username: username, password: password}),
+      body: JSON.stringify({ username: username, password: password }),
       credentials: 'include',
       headers: {
         'content-type': 'application/json'
@@ -88,7 +88,6 @@ export class UserService {
   }
 
   findLoggedUser() {
-    console.log('sadasdas');
     return fetch(this.urlLoggedUser, {
       credentials: 'include',
     }).then(response => {
@@ -128,15 +127,15 @@ export class UserService {
     });
   }
 
-  deleteUser(userId:any) {
+  deleteUser(userId: any) {
     return fetch(this.url + '/' + userId, {
       method: 'DELETE',
       credentials: 'include'
     });
   }
 
-  createUser(user:any) {
-    return fetch(this.url , {
+  createUser(user: any) {
+    return fetch(this.url, {
       method: 'POST',
       body: JSON.stringify(user),
       credentials: 'include',
@@ -220,7 +219,7 @@ export class UserService {
       }
     });
   }
-  
+
   verifyUser(username: any, callback: any) {
     return fetch(this.urlVerifyUsername + '/' + username).then(response => {
       if (response.headers.get('content-type') != null) {

@@ -11,8 +11,11 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  radiovalue!: any;
   name!: string;
   email!: string;
+  lastname!: string;
+  firstname!: string
   username!: string;
   password!: string;
   pass!: string;
@@ -43,9 +46,12 @@ export class LoginComponent {
   ItemAccount(): AcountModel {
 
     const item = new AcountModel();
-    item.name = this.name;
+    item.firstName = this.firstname;
+    item.lastName = this.lastname;
     item.username = this.username;
-    item.pass = this.password;
+    item.email = this.email;
+    item.password = this.pass;
+    item.role = this.radiovalue
 
     return item
   }
@@ -54,10 +60,11 @@ export class LoginComponent {
     this.userService
       .login(this.username, this.password)
       .then((obj: any) => {
-        console.log("objobjobj", obj)
         if (obj.status === 'success') {
+          localStorage.setItem("roles", JSON.stringify(obj));
+          this.userService.checklogin$.next(true)
           if (obj.role === 'JobSeeker') {
-            this.router.navigate(['profile-seeker']);
+            this.router.navigate(['home']);
           } else if (obj.role === 'Admin') {
             this.router.navigate(['admin']);
           } else {
@@ -78,8 +85,47 @@ export class LoginComponent {
           this.verificationPending = true;
         }
       });
+
+    setTimeout(() => {
+
+      this.userService.findLoggedUser()
+        .then((user) => {
+          if (user !== null) {
+            if (user.firstName === undefined) {
+            }
+            localStorage.setItem("user", JSON.stringify(user));
+            this.userService.checklogin$.next(true)
+          } else {
+            console.log('User: null');
+          }
+        });
+
+    }, 200);
   }
 
+  register() {
+    if (this.radiovalue) {
+
+
+      let item = this.ItemAccount();
+      this.userService.createUser(item).then(res => {
+        if (res.status == true) {
+          alert("success");
+          this.password = item.password
+          this.toggleInactiveState();
+        }
+        else {
+          alert("username is inval");
+        }
+      })
+    }
+    else {
+      alert("Please choose roles");
+    }
+  }
+  radioChange() {
+    // console.log("ffff", this.radiovalue)
+  }
 }
 
 

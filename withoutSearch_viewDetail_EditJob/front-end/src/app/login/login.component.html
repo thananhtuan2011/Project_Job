@@ -28,10 +28,19 @@
                         </a>
                     </div>
                     <span>or use your email for registeration</span>
-                    <input  [(ngModel)]="name" [ngModelOptions]="{standalone: true}" type="text" placeholder="Name">
+                    <input  [(ngModel)]="firstname" [ngModelOptions]="{standalone: true}" type="text" placeholder="Firstname">
+                    <input  [(ngModel)]="lastname" [ngModelOptions]="{standalone: true}" type="text" placeholder="Lastname">
                     <input  [(ngModel)]="username" [ngModelOptions]="{standalone: true}" type="text" placeholder="Username">
                     <input  [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
-                    <button>Sign up</button>
+                    <input *ngIf="radiovalue=='Recruiter'"  [(ngModel)]="email" [ngModelOptions]="{standalone: true}" type="text" placeholder="Email">
+                    <section class="example-section">
+                        <label class="example-margin">Roles:</label>
+                        <mat-radio-group [(ngModel)]="radiovalue" [ngModelOptions]="{standalone: true}"  (change)="radioChange()">
+                          <mat-radio-button class="example-margin" value="Recruiter">Recruiter</mat-radio-button>
+                          <mat-radio-button class="example-margin" value="JobSeeker">JobSeeker</mat-radio-button>
+                        </mat-radio-group>
+                      </section>
+                    <button (click)="register()">Sign up</button>
                 </form>
             </div>
 

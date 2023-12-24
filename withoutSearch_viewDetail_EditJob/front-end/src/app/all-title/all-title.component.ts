@@ -1,0 +1,145 @@
+import { Component, OnInit } from '@angular/core';
+import { JobPostingModelClient } from '../models/job-posting.model.client';
+import { HttpClient } from '@angular/common/http';
+import { JobListingService } from '../services/job-listing.service';
+import { SaveJobService } from '../services/save-job.service';
+import { ActivatedRoute } from '@angular/router';
+import { JobPostingService } from '../services/job-posting.service';
+
+@Component({
+  selector: 'app-all-title',
+  templateUrl: './all-title.component.html',
+  styleUrl: './all-title.component.css'
+})
+export class AllTitleComponent implements OnInit {
+  jobPostings: JobPostingModelClient[] = [];
+  moreDetails = false;
+  listSkill: any[] = [{
+    name: "Agile Methodology",
+
+  },
+  {
+    name: "Agile Methodology",
+
+  },
+  {
+    name: "Agile Methodology",
+
+  },
+  {
+    name: "Agile Methodology",
+
+  },
+  {
+    name: "Agile Methodology",
+
+  },
+  {
+    name: "Agile Methodology",
+
+  },
+  {
+    name: "Agile Methodology",
+
+  },
+  {
+    name: "Agile Methodology",
+
+  },
+  {
+    name: "Agile Methodology",
+
+  },
+  {
+    name: "Agile Methodology",
+
+  },
+  {
+    name: "Agile Methodology",
+
+  },
+
+
+  ]
+  sAddMode = false;
+  rAddMode = false;
+  qAddMode = false;
+  skill = '';
+  responsibility = '';
+  qualification = '';
+  jobPost: JobPostingModelClient = new JobPostingModelClient();
+
+  constructor(private jobService: JobListingService, private route: ActivatedRoute,
+    private saveJobService: SaveJobService, private jobPostService: JobPostingService,
+    private http: HttpClient) {
+
+    this.jobPost.skillsRequired = [];
+    this.jobPost.responsibilities = [];
+    this.jobPost.minQualification = [];
+  }
+
+
+  getJobPostingOfCurrentUser() {
+    this.jobPostService.getAllJobPostingForUser().then((jobPostings) => {
+      this.jobPostings = jobPostings;
+      this.jobPostings.forEach((jobPost) => {
+        if (jobPost != null && jobPost !== undefined && jobPost.datePosted != undefined) {
+          jobPost['date'] = new Date(jobPost.datePosted).toDateString();
+        } else {
+          jobPost['date'] = '';
+        }
+      });
+
+    });
+  }
+
+  addMoreDetails() {
+    this.moreDetails = true;
+  }
+
+  toggleRAddMode() {
+    this.rAddMode = !this.rAddMode;
+  }
+
+  toggleSAddMode() {
+    this.sAddMode = !this.sAddMode;
+  }
+
+  toggleQAddMode() {
+    this.qAddMode = !this.qAddMode;
+  }
+
+  cancelAddR() {
+    this.toggleRAddMode();
+  }
+
+  cancelAddS() {
+    this.toggleSAddMode();
+  }
+
+  cancelAddQ() {
+    this.toggleQAddMode();
+  }
+
+  saveJob() {
+    console.log(this.jobPost);
+    this.jobPost.datePosted = new Date();
+    this.jobPost.jobSource = 'job-portal';
+    this.jobPostService.createJobPosting(this.jobPost).then(() => {
+      this.getJobPostingOfCurrentUser();
+    }
+    );
+  }
+
+  deleteJobPosting(id: any) {
+    this.jobPostService.deleteJobPosting(id).then(() =>
+      this.saveJobService.deleteJobApplicationByJobPosting(id, 'job-portal')).then(() =>
+        this.getJobPostingOfCurrentUser()
+      );
+  }
+
+  ngOnInit() {
+    this.getJobPostingOfCurrentUser();
+  }
+
+}

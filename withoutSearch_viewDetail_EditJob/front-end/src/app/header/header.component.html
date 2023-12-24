@@ -15,26 +15,34 @@
             <div class="collapse navbar-collapse" style="    justify-content: end;" id="navbarNavAltMarkup">
               <div class="navbar-nav" style="justify-content: space-between;">
                        <a  routerLinkActive="menu-item-active"  routerLink="/abount"  class="nav-item nav-link itemcontent" href="javascript:;">About us </a>
-                <!-- <a routerLinkActive="menu-item-active"  routerLink="/for-candidate"  class="nav-item nav-link itemcontent" href="javascript:;">For Candidate</a> -->
+                       <a  routerLinkActive="menu-item-active"  routerLink="/blog"  class="nav-item nav-link itemcontent" href="javascript:;">Blog </a>
+                       <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                       All Job
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a routerLink="/all-skill" class="dropdown-item" href="javascript:;">Job by skill</a></li>
+                          <li><a routerLink="/all-title" class="dropdown-item" hhref="javascript:;">Job by title</a></li>
+                        </ul>
+                    </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     For Candidate
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="javascript:;">Profile Management</a></li>
-                    <li><a class="dropdown-item" hhref="javascript:;">Save/Applied Job</a></li>
-                    <li><hr class="dropdown-divider"> </li>
-                    <li class="nav-item dropend dropdown-item" style="padding:  0px !important;">
+                    <li><a  class="dropdown-item" href="javascript:;">Profile Management</a></li>
+                    <li><a  routerLink="/for-candidate"  class="dropdown-item" hhref="javascript:;">Save/Applied Job</a></li>
+                    <!-- <li><hr class="dropdown-divider"> </li> -->
+                    <!-- <li class="nav-item dropend dropdown-item" style="padding:  0px !important;">
                       <a style="color: white;"  class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                      All Job
                       </a>
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item"href="javascript:;">Job by skill</a></li>
-                        <li><a class="dropdown-item" href="javascript:;">Job by title</a></li>
+                        <li><a routerLink="/all-skill" class="dropdown-item"href="javascript:;">Job by skill</a></li>
+                        <li><a routerLink="/all-title" class="dropdown-item" href="javascript:;">Job by title</a></li>
                         <li><hr class="dropdown-divider"></li>
-                     
-                      </ul>
-                    </li>
+                    </ul>
+                    </li> -->
                   </ul>
               </li>
                  <!-- <a  routerLinkActive="menu-item-active"  routerLink="/dashboard-recruiter" class="nav-item nav-link itemcontent" href="javascript:;">For Recruiter</a> -->
@@ -43,18 +51,32 @@
                     For Recruiter
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="javascript:;">All Job</a></li>
+                    <li><a  class="dropdown-item" href="javascript:;">All Job</a></li>
                     <li><a class="dropdown-item" hhref="javascript:;">Job Posting</a></li>
-                    <li ><a  routerLink="/profile-seeker" class="dropdown-item" hhref="javascript:;">Profile</a></li>
                    
                   </ul>
               </li>
                 <a class="nav-item nav-link itemcontent " href="javascript:;">Contact us </a>
+                <li class="nav-item dropdown" *ngIf="user"  >
+                  <a class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{user.lastName}} {{user.firstName}}
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a (click)="logout()" class="dropdown-item" href="javascript:;">Logout</a></li>
+                    <li><a class="dropdown-item" hhref="javascript:;">Profile</a></li>
+                  </ul>
+              </li>
               </div>
             </div>
-           
-          <button  routerLink="/login" style="background-color: red;color: white;border-radius: 10px;padding: 7px;">Sign In/Register</button>
 
+        
+           
+          <button *ngIf="!user"  routerLink="/login" style="background-color: red;color: white;border-radius: 10px;padding: 7px;">Sign In/Register</button>
+
+
+          <!-- {{user.lastName}} {{user.firstName}} -->
+         
+          <!-- <button (click)="logout()" *ngIf="user"  routerLink="/login" style="background-color: red;color: white;border-radius: 10px;padding: 7px;">Logout</button> -->
           </nav>
     </div>
 </div>

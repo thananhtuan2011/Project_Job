@@ -1,5 +1,10 @@
 export class AcountModel {
-    name!: string;
+    lastName!: string;
+    firstName!: string;
     username!: string;
-    pass!: string;
+    email!: string;
+    password!: string;
+    role!: string;
+
+
 }

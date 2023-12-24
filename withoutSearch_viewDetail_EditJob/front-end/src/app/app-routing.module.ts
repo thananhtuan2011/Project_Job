@@ -1,7 +1,6 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterComponent } from './register/register.component';
 import { JobBoardComponent } from './job-board/job-board.component';
 import { AdminComponent } from './admin/admin.component';
 import { JobListComponent } from './job-list/job-list.component';
@@ -14,6 +13,8 @@ import { ViewJobComponent } from './view-job/view-job.component';
 import { PostJobComponent } from './post-job/post-job.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ForCadidateComponent } from './for-cadidate/for-cadidate.component';
+import { AllTitleComponent } from './all-title/all-title.component';
+import { BlogComponent } from './blog/blog.component';
 
 
 const routes: Routes = [
@@ -21,13 +22,14 @@ const routes: Routes = [
   { path: 'home', component: JobBoardComponent },
   { path: 'for-candidate', component: ForCadidateComponent },
 
+  { path: 'blog', component: BlogComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'register', component: RegisterComponent },
   { path: 'job-list/:location/:keyword', component: JobListComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile-recruiter', component: ProfileRecruiterComponent },
   { path: 'profile-seeker', component: ProfileSeekerComponent },
-  { path: 'dashboard-recruiter', component: RecruiterDashboardComponent },
+  { path: 'all-skill', component: RecruiterDashboardComponent },
+  { path: 'all-title', component: AllTitleComponent },
   { path: 'abount', component: AboutUsComponent },
   { path: 'dashboard-seeker', component: JobSeekerDashboardComponent },
   { path: 'job-list/:location/:keyword/view-job/:jobId', component: ViewJobComponent },
@@ -41,7 +43,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [RegisterComponent, ProfileRecruiterComponent, JobBoardComponent, AdminComponent,
+export const routingComponents = [AllTitleComponent, ProfileRecruiterComponent, JobBoardComponent, AdminComponent,
   JobListComponent, ProfileSeekerComponent, ViewJobComponent, JobSeekerDashboardComponent, RecruiterDashboardComponent]
 
 

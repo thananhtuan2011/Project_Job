@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { RegisterComponent } from './register/register.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -41,6 +42,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ForCadidateComponent } from './for-cadidate/for-cadidate.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AllTitleComponent } from './all-title/all-title.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     ViewJobComponent,
     JobListComponent,
-    RegisterComponent,
+
     AdminComponent,
     PostJobComponent,
     ExperienceListComponent,
@@ -71,7 +74,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserSidebarComponent,
     JobSeekerDashboardComponent,
     RecruiterDashboardComponent,
-    routingComponents
+    routingComponents,
+    AllTitleComponent,
+    BlogComponent
 
   ],
   imports: [
@@ -82,7 +87,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     MatIconModule,
+    MatRadioModule,
     MatCardModule,
+    MatCheckboxModule,
     CommonModule,
     MatButtonModule
   ],
