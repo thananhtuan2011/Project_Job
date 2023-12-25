@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 interface SocialContact {
   socialtype: string;
@@ -27,7 +29,7 @@ export class PersonalInfoComponent implements OnInit {
   socialContact: SocialContact[] = [];
   editMode = false;
   Infor: any;
-  constructor(private userService: UserService) { this.user = JSON.parse(localStorage.getItem("user")!); }
+  constructor(private userService: UserService, private dialog: MatDialog,) { this.user = JSON.parse(localStorage.getItem("user")!); }
 
   edit() {
     this.editMode = true;
@@ -71,7 +73,20 @@ export class PersonalInfoComponent implements OnInit {
       this.Infor = res
     })
   }
+  Update() {
 
+    const dialogRef = this.dialog.open(EditProfileComponent, {
+      width: "800px",
+      data: this.Infor,
+      // panelClass:'no-padding'
+
+    });
+    dialogRef.afterClosed().subscribe(res => {
+
+      this.InforUser();
+    })
+
+  }
   ngOnInit() {
     this.InforUser();
     // this.userService.findLoggedUser()

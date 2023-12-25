@@ -59,6 +59,7 @@ import { DeleteEntityDialogComponent } from './crud/delete-entity-dialog/delete-
 import { ActionNotificationComponent } from './crud/action-natification/action-notification.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { JobApplyComponent } from './job-apply/job-apply.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 @NgModule({
@@ -100,7 +101,8 @@ import { JobApplyComponent } from './job-apply/job-apply.component';
     DetailObDefaultComponent,
     MyJobComponent,
     ContactUsComponent,
-    JobApplyComponent
+    JobApplyComponent,
+    EditProfileComponent
 
   ],
   imports: [

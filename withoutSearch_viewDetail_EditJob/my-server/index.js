@@ -191,6 +191,24 @@ app.post("/api/removejob/:id", cors(), async (req, res) => {
   const result = await JobPostingCollection.deleteOne({ _id: new ObjectId(jobId) });
   res.send(result);
 });
+app.post("/api/updateaccount/:id", cors(), async (req, res) => {
+  const jobId = req.params.id;
+  console.log("jobId", jobId)
+  console.log("req.body", req.body)
+  const result = await AccountCollection.updateOne({ _id: new ObjectId(jobId) }
+    , {
+      $set: {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email
+
+      }
+    }
+
+
+  );
+  res.send(result);
+});
 // app.get("/products/product/:id", cors(), async (req, res) => {
 //   try {
 //     const productId = req.params.id;

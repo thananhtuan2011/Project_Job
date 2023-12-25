@@ -23,6 +23,7 @@ export class UserService {
   urlRecruiterProfile: string;
   urlPremiumGrant: string;
   urlPremiumRevoke: string;
+  urlupdateaccount!: string;
   public checklogin$ = new BehaviorSubject<any>(false);
   constructor(private _http: HttpClient) {
 
@@ -34,6 +35,7 @@ export class UserService {
     this.urlLoggedRecruiter = base + '/api/profile/recruiter';
     this.urlUpdateProfile = base + '/api/profile';
     this.urlLogin = base + '/api/login';
+    this.urlupdateaccount = base + '/api/updateaccount';
     this.urlPassReset = base + '/api/reset';
     this.urlVerifyUsername = base + '/api/verify';
     this.urlLogout = base + '/api/logout';
@@ -78,6 +80,13 @@ export class UserService {
     return this._http.get<any>(url);
 
   }
+  updateaccount(_id: any, body: any) {
+
+    const url = this.urlupdateaccount + '/' + _id;
+    return this._http.post<any>(url, body);
+
+  }
+
   //   return fetch(this.urlLogin, {
   //     method: 'POST',
   //     body: JSON.stringify({ username: username, password: password }),
