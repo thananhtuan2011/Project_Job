@@ -1,0 +1,180 @@
+  <mat-card class="example-card-body" style="height: 98%;   ">
+                <div style="padding: 10px; display: flex;align-items: center;" >
+                  
+                    <img  style="width: 60px;" mat-card-image src="../../assets/image/iconuser.png" alt="Photo of a Shiba Inu">
+                    <div style="display: flex;flex-direction: column; padding-left: 20px;width: 100%;">
+                        <span class="titleitem" style="text-align: start;">
+                           {{Detailjob.namejob}}
+                        </span>
+                        <span style="text-align: start;">
+                            {{Detailjob.namecty}}
+                        </span>
+                        <div style="display: flex;align-items: center;" >
+                            <span style="font-weight: bold;">
+                             Salary:
+                            </span> {{Detailjob.minsalary| currency}}-{{Detailjob.maxsalary| currency}} / year
+                           </div>
+                    </div>
+        
+                </div>
+                <div  style="width: 100%;   padding-right: 20px;
+                padding-left: 20px;">
+                    <button (click)="Apply()" style="border: none;
+                    height: 50px;
+                    width: 100%;
+                    padding-right: 20px;
+                    padding-left: 20px;
+                    font-weight: bold;
+                    background-color: red;
+                    color: white;
+                    border-radius: 5px;"> APPY NOW</button>
+                </div>
+                <div style="display: flex ;justify-content: space-around; padding: 20px;">
+                    <div style="display: flex;align-items: center;">
+                        <mat-icon>home</mat-icon>
+                        <span style="font-weight: bold;">
+                             Working model:
+                        </span>
+                        <span>
+                            Hybrid
+                            </span>
+                    </div>
+                    <div  style="display: flex;align-items: center;">
+                        <mat-icon> location_on</mat-icon>
+                        <span style="font-weight: bold;">
+                            City:
+                        </span>
+                        <span>
+                          {{Detailjob.location}}
+                            </span>
+                    </div>
+                </div>
+              
+              <mat-card-content style="border-top:  1px solid; padding-top: 20px;">
+               
+           
+       <div>
+        <h2>
+            Reasons to apply
+        </h2>
+        <div style="display: flex;flex-direction: column;">
+          
+            <div >
+                <span>
+                    1.
+                </span>
+                <span style="font-weight: bold;">
+                    Cutting-Edge Projects:
+                </span>
+                Join a team at the forefront of technological innovation. As a Software Engineer with Tech Innovators Inc., you'll have the opportunity to work on cutting-edge projects that shape the future of the tech industry.
+            </div>
+       
+              
+            <div style="padding-top: 20px;" >
+                <span>
+                    2.
+                </span>
+                <span style="font-weight: bold;">
+                    Remote Flexibility:
+                </span>
+                Enjoy the freedom to work from anywhere. Embrace a healthy work-life balance with our remote working model, allowing you to contribute your skills and expertise without being tied to a traditional office setting.
+            </div>
+            <div style="padding-top: 20px;" >
+                <span>
+                    3.
+                </span>
+                <span style="font-weight: bold;">
+                    Collaborative Culture
+                </span>
+                Thrive in a collaborative and supportive work environment. At Tech Innovators Inc., we value teamwork and creativity. Join a culture that encourages open communication, idea sharing, and continuous learning.
+            </div>
+      
+            </div>
+          
+       </div>
+       <div style="border-top:  1px solid; margin-top:  20px;">
+        <h2 style="margin-top: 20px;">
+            Job requirements
+        </h2>
+        <div style="display: flex;flex-direction: column;">
+          <span [innerHTML]="Detailjob.jobs_requirement">
+
+          </span>
+         
+       
+              
+      
+       
+      
+            </div>
+
+            <h2 style="margin-top: 20px;">
+                Job Description
+            </h2>
+            <div style="display: flex;flex-direction: column;">
+              
+              
+                <span [innerHTML]="Detailjob.job_description">
+
+                </span>
+          
+           
+          
+                </div>
+              
+          
+       </div>
+          
+ 
+        <div style="border-top:  1px solid; margin-bottom: 10px;">
+            <h2 style="margin-top: 10px;">
+                Benefit
+            </h2>
+    
+       <div style="display: flex;flex-direction: column; padding-bottom: 20px">
+          
+        <span [innerHTML]="Detailjob.benefit">
+
+        </span>
+        <div style="display: flex;justify-content: space-between;margin-top: 10px;">
+         <div style="display: flex;flex-direction: column    ;">
+
+         
+<div style="display: flex;align-items: center;">
+ <span style="font-weight: bold;">Working model:</span>
+ <span>
+     Hybrid
+ </span>
+</div>
+<div style="display: flex;align-items: center;">
+ <span style="font-weight: bold;">Scale:</span>
+ <span>
+     100+
+ </span>
+</div>
+</div>
+<div style="display: flex;flex-direction: column    ;">
+
+
+<div style="display: flex;align-items: center;">
+ <span style="font-weight: bold;">City:</span>
+ <span>
+     {{Detailjob.location}}
+ </span>
+</div>
+<div style="display: flex;align-items: center;">
+ <span style="font-weight: bold;">Time:</span>
+ <span>
+     08:00 - 17:00
+ </span>
+</div>
+</div>
+        </div>
+   
+    
+   
+         </div>
+        </div>
+              </mat-card-content>
+        
+            </mat-card>

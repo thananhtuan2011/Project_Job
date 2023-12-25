@@ -1,0 +1,89 @@
+<h1 style="font-weight: bold; background-color: white;text-align: center;">***List Jobs Apply***</h1>
+
+<div  style="background-color: white;height: 100%;">
+    <div *ngIf="listmyjob.length==0" style="text-align: center;padding-top: 10%;">
+        <span class="wrapper">
+    
+        <label class="animationtext" style="font-size: 50px;">Bạn chưa apply bất kì jobs nào trong hệ thống !!! </label>
+    </span>
+    <div>
+        <button routerLink="/post"  type="button" class="btn btn-primary btn-lg">Create Job</button>
+    </div>
+    
+    </div>
+    
+    
+    <div *ngIf="listmyjob.length>0" style=" padding: 50px;display: flex;flex-wrap: wrap;justify-content: center;">
+      
+      
+        <div *ngFor="let item of listmyjob | paginate: { itemsPerPage: 8, currentPage: p }" >
+    
+        
+        <mat-card class="example-card" style="margin-top: 10px;margin-right: 10px;"  >
+          
+            <div style="padding: 10px;" >
+                <span class="titleitem">
+                   {{item.InforJob.namejob}}
+                </span>
+                <div style="display: flex;align-items: center;">
+                    <img class="itemimg"  mat-card-image src="../../assets/image/iconuser.png" alt="Photo of a Shiba Inu">
+                    <span>
+                        {{item.InforJob.namecty}}
+                    </span>
+                </div>
+    
+            </div>
+          <mat-card-content>
+          <div style="display: flex;align-items: center;" >
+           <span style="font-weight: bold;padding-left: 5px;">
+            Salary:
+           </span> {{item.InforJob.minsalary| currency}}-{{item.InforJob.maxsalary| currency}} / year
+          </div>
+          <hr>
+          <div style="display: flex;align-items: center;" >
+            <span style="font-weight: bold;padding-left: 5px;"> Skills:</span>
+            <!-- <div *ngIf="item.InforJob.listSkill.length<=2" style="display: flex;">
+                <div *ngFor="let skill of item.InforJob.listSkill" >
+                    <span style="font-weight: bold;">
+                      
+                    </span>{{skill}},
+                </div>
+            </div> -->
+            <div  style="display: flex;">
+                <div *ngFor="let skill of item.InforJob.listSkill" >
+                    <span style="font-weight: bold;">
+                      
+                    </span>{{skill}},
+                </div>
+                
+            </div>
+           
+           
+           </div>
+           <div style="display: flex;align-items: center;" >
+            <span style="font-weight: bold; padding-left: 5px;">
+                City:
+            </span>{{item.InforJob.location}}
+           </div>
+           <hr>
+           <div style="display: flex; margin-top: 10px;" >
+            <span style="font-weight: bold; padding-left: 5px;">
+                 Description:
+            </span>{{item.InforJob.job_description.slice(0,200)}}
+           </div>
+           <hr>
+           <div style="display: flex; margin-top: 10px;" >
+            <span style="font-weight: bold; padding-left: 5px;">
+                Requirement:
+            </span>{{item.InforJob.jobs_requirement.slice(0,200)}}
+           </div>
+          </mat-card-content>
+    
+        </mat-card>
+    </div>
+    
+      </div>
+    </div>
+    <div *ngIf="listmyjob.length>0" class="text-center mt-3">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>

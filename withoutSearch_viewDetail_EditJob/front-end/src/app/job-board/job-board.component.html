@@ -45,7 +45,7 @@ position: relative;   padding: 50px;">
 <ng-container >
   <div style="display: flex;justify-content: space-between;padding-bottom: 15px;">
     <h1> Where do you want to work?</h1>
-    <button style="border: none;
+    <button (click)="LoadLocation(null)"   style="border: none;
     height: 30px;
     padding-right: 20px;
     padding-left: 20px;
@@ -54,6 +54,40 @@ position: relative;   padding: 50px;">
     border-radius: 5px;"> See All</button>
   </div>
   <div style="display: flex;flex-wrap: wrap;justify-content: space-between;">
+    <mat-card class="example-card">
+      <div style="    text-align: center;" >
+        <img  class="itemimg" mat-card-image src="../../assets/image/binhduong.jpg" alt="Photo of a Shiba Inu">
+
+      </div>
+    <mat-card-content>
+    <span style="font-size: 20px; font-weight: bold;">
+      Binh Duong
+    </span>
+    </mat-card-content>
+  <div style="display: flex;justify-content: space-between;padding: 15px;">
+    <span>
+      140+ Jobs Available
+    </span>
+    <button  (click)="LoadLocation('Bình Dương')"  class="itembutton">SEE ALL</button>
+  </div>
+  </mat-card>
+  <mat-card class="example-card">
+    <div style="    text-align: center;" >
+      <img  class="itemimg" mat-card-image src="../../assets/image/hanoi.jpg" alt="Photo of a Shiba Inu">
+
+    </div>
+  <mat-card-content>
+  <span style="font-size: 20px; font-weight: bold;">
+  Ha Noi City
+  </span>
+  </mat-card-content>
+<div style="display: flex;justify-content: space-between;padding: 15px;">
+  <span>
+    2000+ Jobs Available
+  </span>
+  <button (click)="LoadLocation('Hà Nội')"  class="itembutton">SEE ALL</button>
+</div>
+</mat-card>
     <mat-card class="example-card">
         <div style="    text-align: center;" >
           <img  class="itemimg" mat-card-image src="../../assets/image/hcm.png" alt="Photo of a Shiba Inu">
@@ -68,7 +102,7 @@ position: relative;   padding: 50px;">
       <span>
         1000+ Jobs Available
       </span>
-      <button class="itembutton">SEE ALL</button>
+      <button (click)="LoadLocation('Hồ Chí Minh')"   class="itembutton">SEE ALL</button>
     </div>
     </mat-card>
     <mat-card class="example-card">
@@ -85,7 +119,7 @@ position: relative;   padding: 50px;">
     <span>
       800+ Jobs Available
     </span>
-    <button  class="itembutton">SEE ALL</button>
+    <button (click)="LoadLocation('Đà Nẵng')"    class="itembutton">SEE ALL</button>
   </div>
   </mat-card>
   <mat-card class="example-card">
@@ -102,7 +136,7 @@ position: relative;   padding: 50px;">
   <span>
     500+ Jobs Available
   </span>
-  <button class="itembutton">SEE ALL</button>
+  <button (click)="LoadLocation('Cần Thơ')"   class="itembutton">SEE ALL</button>
 </div>
 </mat-card>
   </div>
@@ -140,7 +174,7 @@ position: relative;   padding: 50px; margin: 0px;">
     <ng-container >
       <div style="display: flex;justify-content: space-between;padding-bottom: 15px;">
         <h1>Latest articles</h1>
-        <button style="border: none;
+        <button  style="border: none;
         height: 30px;
         padding-right: 20px;
         padding-left: 20px;

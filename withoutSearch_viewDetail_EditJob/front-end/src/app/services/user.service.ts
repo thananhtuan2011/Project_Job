@@ -19,6 +19,7 @@ export class UserService {
   urlDeleteProfile: string;
   urlApproveRecruiter: string;
   urlPending: string;
+  infor!: string;
   urlRecruiterProfile: string;
   urlPremiumGrant: string;
   urlPremiumRevoke: string;
@@ -26,7 +27,7 @@ export class UserService {
   constructor(private _http: HttpClient) {
 
     let base = 'http://localhost:5500';
-
+    this.infor = base + '/api/inforuser';
     this.url = base + '/api/user';
     this.urlRegister = base + '/api/register';
     // this.urlLoggedUser = base + '/api/profile';
@@ -69,6 +70,12 @@ export class UserService {
     }
     const url = this.urlLogin;
     return this._http.post<any>(url, item);
+
+  }
+  getIforUser(_id: any) {
+
+    const url = this.infor + '/' + _id;
+    return this._http.get<any>(url);
 
   }
   //   return fetch(this.urlLogin, {

@@ -2,6 +2,7 @@
 
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { Router } from '@angular/router';
+import { JobService } from '../for-cadidate/job.service';
 
 @Component({
   selector: 'app-job-board',
@@ -11,19 +12,19 @@ import { Router } from '@angular/router';
 export class JobBoardComponent implements OnInit {
 
   keywordOrTitle: string = " ";
-  location: string= " ";
+  location: string = " ";
   states = ['Ho Chi Minh City',
-  'Ha Noi',
-  'Da Nang',
-  'Hai Phong',
-  'Can Tho',
-  'Bien Hoa',
-  'Nha Trang',
-  'Hue',
-  'Vung Tau',
-  'Qui Nhon'];
+    'Ha Noi',
+    'Da Nang',
+    'Hai Phong',
+    'Can Tho',
+    'Bien Hoa',
+    'Nha Trang',
+    'Hue',
+    'Vung Tau',
+    'Qui Nhon'];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private _job_services: JobService) { }
 
   setVal(val: any) {
     this.location = val;
@@ -33,7 +34,17 @@ export class JobBoardComponent implements OnInit {
     return this.location;
   }
 
-  ngOnInit() {}
+  LoadLocation(value: any) {
+    this.router.navigate(['all-job']);
+    setTimeout(() => {
+      this._job_services.location$.next(value);
+    }, 300);
+
+
+
+  }
+
+  ngOnInit() { }
 }
 
 @Pipe({ name: 'searchFilter' })

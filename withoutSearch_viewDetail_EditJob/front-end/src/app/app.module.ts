@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgxPaginationModule } from 'ngx-pagination'
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 import { AsyncPipe, CommonModule } from '@angular/common';
@@ -50,11 +51,22 @@ import { BlogComponent } from './blog/blog.component';
 import { MatAutocompleteSelectedEvent, MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { ActionInsertComponent } from './action-insert/action-insert.component';
+import { JobDetailComponent } from './job-detail/job-detail.component';
+import { DetailObDefaultComponent } from './detail-ob-default/detail-ob-default.component';
+import { MyJobComponent } from './my-job/my-job.component';
+import { LayoutUtilsService } from './layout-utils.service';
+import { DeleteEntityDialogComponent } from './crud/delete-entity-dialog/delete-entity-dialog.component';
+import { ActionNotificationComponent } from './crud/action-natification/action-notification.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { JobApplyComponent } from './job-apply/job-apply.component';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 @NgModule({
   declarations: [
     AppComponent,
+    DeleteEntityDialogComponent,
     LoginComponent,
+    ActionNotificationComponent,
     ProfileRecruiterComponent,
     ProfileSeekerComponent,
     NavBarComponent,
@@ -83,10 +95,16 @@ import { ActionInsertComponent } from './action-insert/action-insert.component';
     routingComponents,
     AllTitleComponent,
     BlogComponent,
-    ActionInsertComponent
+    ActionInsertComponent,
+    JobDetailComponent,
+    DetailObDefaultComponent,
+    MyJobComponent,
+    ContactUsComponent,
+    JobApplyComponent
 
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     MatFormFieldModule,
     MatMenuModule,
@@ -115,6 +133,7 @@ import { ActionInsertComponent } from './action-insert/action-insert.component';
     // },
     JobListingService,
     UserService,
+    LayoutUtilsService,
     SaveJobService,
     JobPostingService,
     RecruiterDetailService

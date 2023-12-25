@@ -36,10 +36,15 @@ const client = new MongoClient("mongodb://127.0.0.1:27017");
 client.connect();
 const database = client.db("Job-portal");
 const ProductCollection = database.collection("Product"); // Change this line
+const ContactCollection = database.collection("Contact"); // Change this line
+const JobApplicationCollection = database.collection("JobApplication"); // Change this line
+
 
 const JobPostingCollection = database.collection("JobPosting"); // Change this line
 const SkillCollection = database.collection("Skill"); // Change this line
-
+function isEmpty(object) {
+  return Object.keys(object).length === 0
+}
 
 const AccountCollection = database.collection("User"); // Change this line
 app.post("/api/addskill", cors(), async (req, res) => {
@@ -65,6 +70,20 @@ app.post("/api/login", cors(), async (req, res) => {
   }
 
 
+});
+app.post("/api/contact", cors(), async (req, res) => {
+
+  await ContactCollection.insertOne(req.body);
+  let data = {
+    result: req.body,
+    status: 1
+  }
+  res.send(data);
+
+});
+app.get("/api/alljobApply", cors(), async (req, res) => {
+  const result = await JobApplicationCollection.find({}).toArray();;
+  res.send(result);
 });
 app.post("/api/register", cors(), async (req, res) => {
   const checkdata = await AccountCollection.findOne({ username: req.body.username })
@@ -95,8 +114,81 @@ app.post("/api/createdJob", cors(), async (req, res) => {
   res.send(data);
 
 });
+app.post("/api/apply", cors(), async (req, res) => {
+
+  await JobApplicationCollection.insertOne(req.body);
+  let data = {
+    result: req.body,
+    status: 1
+  }
+  res.send(data);
+
+});
+
 app.get("/api/allskill", cors(), async (req, res) => {
   const result = await SkillCollection.find({}).toArray();
+  res.send(result);
+});
+app.get("/api/myjob/:id", cors(), async (req, res) => {
+  const _id = req.params.id;
+  console.log("iddd", _id)
+  const result = await JobPostingCollection.find({ createdBy: _id }).toArray();
+  res.send(result);
+});
+app.get("/api/inforuser/:id", cors(), async (req, res) => {
+  const _iduser = req.params.id;
+  const result = await AccountCollection.findOne({ _id: new ObjectId(_iduser) });
+  res.send(result);
+});
+
+
+app.get("/api/radomjob", cors(), async (req, res) => {
+  const result = await JobPostingCollection.aggregate([{ $sample: { size: 4 } }]).toArray();
+  res.send(result);
+});
+app.post("/api/alljob", cors(), async (req, res) => {
+  console.log("req.body", req.body)
+  let query = {}
+  if (!isEmpty(req.body)) {
+    if (!isEmpty(req.body.filter)) {
+      if (req.body.filter.location) {
+        query = {
+          location: req.body.filter.location,
+        }
+      }
+      if (req.body.filter.namejob) {
+        query = {
+          namejob: new RegExp(req.body.filter.namejob, 'i')
+        }
+      }
+      else {
+        // query = {
+        //   contract_name: { [Op.like]: `%${req.body.filter.contract_name}%` },
+        // }
+      }
+
+
+
+    }
+  }
+  console.log("queryquery", query)
+  const result = await JobPostingCollection.find(query).toArray();;
+  res.send(result);
+});
+app.get("/api/detailjob/:id", cors(), async (req, res) => {
+  const jobId = req.params.id;
+  const result = await JobPostingCollection.findOne({ _id: new ObjectId(jobId) });
+  res.send(result);
+});
+app.get("/api/jobdetail_default", cors(), async (req, res) => {
+  const result = await JobPostingCollection.aggregate([{ $sample: { size: 1 } }]).toArray();
+  // const result = await JobPostingCollection.findOne({ _id: new ObjectId(jobId) });
+  res.send(result);
+});
+
+app.post("/api/removejob/:id", cors(), async (req, res) => {
+  const jobId = req.params.id;
+  const result = await JobPostingCollection.deleteOne({ _id: new ObjectId(jobId) });
   res.send(result);
 });
 // app.get("/products/product/:id", cors(), async (req, res) => {

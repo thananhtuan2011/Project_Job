@@ -28,8 +28,8 @@
                     For Candidate
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a  class="dropdown-item" href="javascript:;">Profile Management</a></li>
-                    <li><a  routerLink="/for-candidate"  class="dropdown-item" hhref="javascript:;">Save/Applied Job</a></li>
+                    <!-- <li><a  class="dropdown-item" href="javascript:;">Profile Management</a></li> -->
+                    <li><a  routerLink="/apply"  class="dropdown-item" hhref="javascript:;">Save/Applied Job</a></li>
                     <!-- <li><hr class="dropdown-divider"> </li> -->
                     <!-- <li class="nav-item dropend dropdown-item" style="padding:  0px !important;">
                       <a style="color: white;"  class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,12 +49,12 @@
                     For Recruiter
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a  class="dropdown-item" href="javascript:;">My Job</a></li>
+                    <li><a   routerLink="/my-job" class="dropdown-item" href="javascript:;">My Job</a></li>
                     <li><a routerLink="/post" class="dropdown-item" hhref="javascript:;">Job Posting</a></li>
-                   
+                 
                   </ul>
               </li>
-                <a class="nav-item nav-link itemcontent " href="javascript:;">Contact us </a>
+                <a routerLink="/contact"  class="nav-item nav-link itemcontent " href="javascript:;">Contact us </a>
                 <li class="nav-item dropdown" *ngIf="user">
                  
                   <a style="font-weight: bold; color: red; margin-top: -10px;" class="nav-link dropdown-toggle" href="javascript:;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,7 +62,7 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li><a (click)="logout()" class="dropdown-item" href="javascript:;">Logout</a></li>
-                    <li><a class="dropdown-item" hhref="javascript:;">Profile</a></li>
+                       <li><a routerLink="/profile" class="dropdown-item" hhref="javascript:;">Profile</a></li>
                   </ul>
               </li>
               </div>

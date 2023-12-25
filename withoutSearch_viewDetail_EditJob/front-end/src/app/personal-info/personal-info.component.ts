@@ -26,8 +26,8 @@ export class PersonalInfoComponent implements OnInit {
   twitter = '';
   socialContact: SocialContact[] = [];
   editMode = false;
-
-  constructor(private userService: UserService) { }
+  Infor: any;
+  constructor(private userService: UserService) { this.user = JSON.parse(localStorage.getItem("user")!); }
 
   edit() {
     this.editMode = true;
@@ -65,8 +65,15 @@ export class PersonalInfoComponent implements OnInit {
   checkHidden(url: string): boolean {
     return url === '';
   }
+  InforUser() {
+    this.userService.getIforUser(this.user._id).subscribe(res => {
+      console.log("ccc", res)
+      this.Infor = res
+    })
+  }
 
   ngOnInit() {
+    this.InforUser();
     // this.userService.findLoggedUser()
     //   .then((user) => {
     //     this.user = user;

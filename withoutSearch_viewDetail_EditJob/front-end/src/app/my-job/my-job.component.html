@@ -1,0 +1,76 @@
+<div  style="background-color: white;height: 100vh;">
+<div *ngIf="listmyjob.length==0" style="text-align: center;padding-top: 10%;">
+    <span class="wrapper">
+
+    <label class="animationtext" style="font-size: 50px;">Bạn chưa tạo bất kì jobs nào trong hệ thống !!! </label>
+</span>
+<div>
+    <button routerLink="/post"  type="button" class="btn btn-primary btn-lg">Create Job</button>
+</div>
+
+</div>
+
+
+<div *ngIf="listmyjob.length>0" style=" padding: 50px;display: flex;flex-wrap: wrap;justify-content: center;">
+    <div *ngFor="let item of listmyjob | paginate: { itemsPerPage: 8, currentPage: p }" >
+
+    
+    <mat-card class="example-card" style="margin-top: 10px;margin-right: 10px;"  >
+        <button (click)="Delete(item._id)" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        <div style="padding: 10px;" >
+            <span class="titleitem">
+               {{item.namejob}}
+            </span>
+            <div style="display: flex;align-items: center;">
+                <img class="itemimg"  mat-card-image src="../../assets/image/iconuser.png" alt="Photo of a Shiba Inu">
+                <span>
+                    {{item.namecty}}
+                </span>
+            </div>
+
+        </div>
+      <mat-card-content>
+      <div style="display: flex;align-items: center;" >
+       <span style="font-weight: bold;padding-left: 5px;">
+        Salary:
+       </span> {{item.minsalary| currency}}-{{item.maxsalary| currency}} / year
+      </div>
+      <hr>
+      <div style="display: flex;align-items: center;" >
+        <span style="font-weight: bold;padding-left: 5px;"> Skills:</span>
+        <div *ngIf="item.listSkill.length<=2" style="display: flex;">
+            <div *ngFor="let skill of item.listSkill" >
+                <span style="font-weight: bold;">
+                  
+                </span>{{skill}},
+            </div>
+        </div>
+        <div *ngIf="item.listSkill.length>2" style="display: flex;">
+            <div *ngFor="let skill of item.listSkill.slice(0,2)" >
+                <span style="font-weight: bold;">
+                  
+                </span>{{skill}},
+            </div>
+            <span>...</span>
+        </div>
+       
+       
+       </div>
+       <div style="display: flex;align-items: center;" >
+        <span style="font-weight: bold; padding-left: 5px;">
+            City:
+        </span>{{item.location}}
+       </div>
+   
+      </mat-card-content>
+
+    </mat-card>
+</div>
+
+  </div>
+</div>
+<div *ngIf="listmyjob.length>0" class="text-center mt-3">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>

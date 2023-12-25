@@ -1,192 +1,45 @@
-<div >
-    <div >
-      <button class="btn btn-outline-primary rounded float-right"
+<div  style="padding: 50px;">
+    <div style="text-align: center;" >
+      <!-- <button class="btn btn-outline-primary rounded float-right"
               [disabled]=editMode
               (click)="edit()">
-        <i class="fas fa-pencil-alt"></i></button>
-      <h3 [hidden]="editMode"> Personal Information </h3>
-      <h3 [hidden]="!editMode" style="color:orange"> Update Personal Information </h3>
+        <i class="fas fa-pencil-alt"></i></button> -->
+      <h1 style="font-weight: bold;"> Personal Information </h1>
+      <!-- <h3 [hidden]="!editMode" style="color:orange"> Update Personal Information </h3> -->
     </div>
     <div class="card">
       <div class="left-container">
-        <img src="https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358__480.jpg" alt="Profile Image">
-        <h2 class="gradienttext">John Doe</h2>
+        <img src="../../assets/image/iconuserhunter.png" alt="Profile Image">
+        <h2 class="gradienttext">{{Infor.lastName}} {{Infor.firstName}}</h2>
         <p>Web Developer</p>
       </div>
       <div class="right-container">
         <h3 class="gradienttext">Profile</h3>
         <table>
             <tr>
-                <td>Name :</td>
-                <td>John Doe</td>
+                <td>FirstName :</td>
+                <td>{{Infor.firstName}}</td>
               </tr>
-          <tr>
-            <td>Age :</td>
-            <td>35</td>
-          </tr>
-          <tr>
+              <tr>
+                <td>LastName :</td>
+                <td>{{Infor.lastName}}</td>
+              </tr>
+          <!-- <tr>
             <td>Mobile :</td>
             <td>+91 XXXXXXXXXX</td>
-          </tr>
+          </tr> -->
           <tr>
             <td>Email :</td>
-            <td>sssss</td>
+            {{Infor.email}}
           </tr>
           <tr>
-            <td>Address :</td>
-            <td>123 Main St, Anytown, USA</td>
+            <td>Role :</td>
+            <td>  {{Infor.role}}</td>
           </tr>
         </table>
         <div class="credit">Made with <span style="color:tomato;font-size:20px;">❤ </span>by<a href="https://www.learningrobo.com/"> Learning Robo</a></div>
       </div>
     </div>
-    <ul class="list-group">
-      <li class="list-group-item" style="font-size: 24px;" [hidden]="editMode">
-        <span style="font-weight: bold; font-size: 26px;">
-          {{firstName}} {{lastName}}
-          <br/>
-        </span>
-        <span style="font-style: italic; color: grey;">
-          <b>Username :</b> {{username}}
-        <br/>
-        
-        </span>
-        <span>
-        
-          <i class="fas fa-envelope"></i> {{email}}
-          <br/>
-          <i class="fas fa-phone"></i>&nbsp;{{phone}}
-          <br/>
-          <hr/>
-        </span>
-        <span>
-          <a [hidden]="checkHidden(linkedin)" href={{linkedin}} target="_blank"><i class="fab fa-linkedin fa-2x"></i></a> &nbsp;
-          <a [hidden]="checkHidden(github)" href={{github}} target="_blank"><i class="fab fa-github fa-2x"></i></a> &nbsp;
-          <a [hidden]="checkHidden(facebook)" href={{facebook}} target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a> &nbsp;
-          <a [hidden]="checkHidden(twitter)" href={{twitter}} target="_blank"><i class="fab fa-twitter fa-2x"></i></a> &nbsp;
-        </span>
-      </li>
-      <li class="list-group-item" style="font-size: 24px;" [hidden]=!editMode>
-        <form>
-          <div class="form-group row mx-2 mt-2">
-  
-            <label for="username" class="text-center col-form-label">
-              Username</label>
-            <input [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="username"
-                   id="username"
-                   class="form-control"
-                   placeholder="Username">
-  
-            <label for="firstname" class="text-center col-form-label">
-              First Name</label>
-            <input [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="firstName"
-                   id="firstname"
-                   class="form-control"
-                   placeholder="First Name">
-  
-            <label for="lastname" class="text-center col-form-label">
-              Last Name</label>
-            <input [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="lastName"
-                   id="lastname"
-                   class="form-control"
-                   placeholder="Last Name">
-  
-            <label for="email" class="text-center col-form-label">
-              Email</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <i class="fas fa-envelope"></i>
-                </div>
-              </div>
-              <input [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="email"
-                     id="email"
-                     class="form-control"
-                     placeholder="abc@xyz.com">
-            </div>
-  
-            <label for="phone" class="text-center col-form-label">
-              Phone</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <i class="fas fa-phone"></i>
-                </div>
-              </div>
-              <input [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="phone"
-                     id="phone"
-                     class="form-control"
-                     placeholder="(555) 111-2222">
-            </div>
-  
-  
-            <label class="text-center col-form-label" for="in">LinkedIn</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <i class="fab fa-linkedin"></i>
-                </div>
-              </div>
-              <input type="text" class="form-control" id="in" placeholder="url"
-                     [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="linkedin">
-            </div>
-  
-            <label class="text-center col-form-label" for="github">Github</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <i class="fab fa-github"></i>
-                </div>
-              </div>
-              <input type="text" class="form-control" id="github" placeholder="url"
-                     [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="github">
-            </div>
-  
-            <label class="text-center col-form-label" for="tweet">Twitter</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <i class="fab fa-twitter"></i>
-                </div>
-              </div>
-              <input type="text" class="form-control" id="tweet" placeholder="url"
-                     [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="twitter">
-            </div>
-  
-            <label class="text-center col-form-label" for="fb">Facebook</label>
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  <i class="fab fa-facebook-square"></i>
-                </div>
-              </div>
-              <input type="text" class="form-control" id="fb" placeholder="url"
-                     [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="facebook">
-            </div>
-  
-            <button id="createBtn"
-                    class="btn btn-block mt-3"
-                    style="color: white; background-color: orange"
-                    (click)="update()">
-              Update Info
-            </button>
-            <button id="cancelBtn"
-                    class="btn btn-secondary btn-block mt-2"
-                    (click)="cancel()">
-              Cancel
-            </button>
-          </div>
-        </form>
-      </li>
-    </ul>
+   
   </div>
   

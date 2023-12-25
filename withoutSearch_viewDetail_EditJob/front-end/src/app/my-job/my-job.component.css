@@ -38,11 +38,13 @@
 
 .example-card {
     max-width: 360px;
+    width: 400px;
+    margin: 40px;
     background-color: white;
     border: 1px solid;
     color: black;
     cursor: pointer;
-    height: 300px;
+    height: 350px;
     border-radius: 15px;
 }
 
@@ -286,4 +288,28 @@
     border-radius: 50% !important;
     width: 45px !important;
     height: 45px !important;
+}
+
+.wrapper {
+
+    font-size: 25px;
+
+    .animationtext {
+        color: #fff;
+        font-size: 92px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: "Josefin Sans", sans-serif;
+        background: linear-gradient(to right, #095fab 10%, #25abe8 50%, #57d75b 60%);
+        background-size: auto auto;
+        background-clip: border-box;
+        background-size: 200% auto;
+        color: #fff;
+        background-clip: text;
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textclip 1.5s linear infinite;
+        display: inline-block;
+    }
 }
