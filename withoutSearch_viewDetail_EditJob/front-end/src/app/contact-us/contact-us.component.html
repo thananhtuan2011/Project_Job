@@ -111,8 +111,7 @@ span.price {
 </head>
 <body>
 
-<h2>Contact Form</h2>
-<p>Resize the browser window to see the effect. When the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other.</p>
+<h2 style="font-weight: bold; text-align: center; padding: 20px;">Contact Form</h2>
 <div class="row">
   <div class="col-100">
     <div class="container">
@@ -120,7 +119,7 @@ span.price {
       
         <div class="row">
           <div class="col-50">
-            <h3>Infor Contact</h3>
+            <h3 style="font-weight: bold;"> Contact Info</h3>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
             <input [(ngModel)]="fullname" [ngModelOptions]="{standalone: true}"  type="text" id="fname" name="firstname" placeholder="John M. Doe">
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
@@ -134,7 +133,7 @@ span.price {
           </div>
 
           <div class="col-50">
-            <h3>Company Infor</h3>
+            <h3 style="font-weight: bold;">Company Info</h3>
             <!-- <label for="fname">Accepted Cards</label> -->
             <!-- <div class="icon-container">
               <i class="fa fa-cc-visa" style="color:navy;"></i>
@@ -152,10 +151,10 @@ span.price {
           </div>
           
         </div>
-        <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Agree infor contact us
+        <label style="font-weight: bold;">
+          <input  type="checkbox" checked="checked" name="sameadr"> I have read and agree to ithunter's Terms of Service and Privacy Policy
         </label>
-        <input (click)="Submit()" type="submit" value="Continue to contact" class="btn">
+        <input (click)="Submit()" type="submit" value="Submit" class="btn">
       </form>
     </div>
   </div>

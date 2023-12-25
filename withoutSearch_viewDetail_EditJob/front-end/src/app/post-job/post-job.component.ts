@@ -188,7 +188,7 @@ export class PostJobComponent implements OnInit {
     this.job_servives.createJobApplication(item).subscribe(res => {
 
       if (res.status == 1) {
-        alert("Thành công")
+        alert("Successfully submitted")
       }
     })
 

@@ -41,7 +41,7 @@ export class ContactUsComponent implements OnInit {
       this.email = ""
       this.phonety = "";
       this.namecty = "",
-        this.layoutUtilsService.showActionNotification("Thành công", MessageType.Delete, 3000, true, false, 3000, 'top', 1);
+        this.layoutUtilsService.showActionNotification("TSuccessfully submitted", MessageType.Delete, 3000, true, false, 3000, 'top', 1);
     })
   }
   ngOnInit(): void {
