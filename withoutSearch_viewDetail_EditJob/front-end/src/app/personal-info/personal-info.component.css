@@ -27,7 +27,7 @@ body {
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+    background: linear-gradient(to right, #f64f59, #fff, red);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
@@ -108,7 +108,7 @@ h3 {
 
 .gradienttext {
     background-image: linear-gradient(to right, #ee00ff 0%, #fbff00 100%);
-    color: transparent;
+    color: red;
     -webkit-background-clip: text;
 }
 

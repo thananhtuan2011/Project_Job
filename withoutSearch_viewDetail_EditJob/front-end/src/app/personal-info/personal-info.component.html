@@ -15,30 +15,37 @@
       </div>
       <div class="right-container">
           <div (click)="Update()" style="width: 100%;text-align: end; cursor: pointer;padding-right: 2%;"> <mat-icon style="color: white;">edit</mat-icon></div>
-        <h3 class="gradienttext">Profile</h3>
-        <table>
-            <tr>
-                <td>FirstName :</td>
-                <td>{{Infor.firstName}}</td>
-              </tr>
-              <tr>
-                <td>LastName :</td>
-                <td>{{Infor.lastName}}</td>
-              </tr>
+        <div style="width: 100%;display: flex;justify-content: center;    padding: 13%;">
+
+      
+        <div  style="justify-content: center;
+        flex-direction: column;
+        display: flex;
+        color: white;">
+        <h1 style="text-align: start;" class="gradienttext">Profile</h1>
+
+            <div>
+                <span>FirstName :</span>
+                <span>{{Infor.firstName}}</span>
+              </div>
+              <div>
+                <span>LastName :</span>
+                <span>{{Infor.lastName}}</span>
+              </div>
           <!-- <tr>
             <td>Mobile :</td>
             <td>+91 XXXXXXXXXX</td>
           </tr> -->
-          <tr>
-            <td>Email :</td>
+          <span>
+            <span>Email :</span>
             {{Infor.email}}
-          </tr>
-          <tr>
-            <td>Role :</td>
-            <td>  {{Infor.role}}</td>
-          </tr>
-        </table>
-        <div class="credit">Made with <span style="color:tomato;font-size:20px;">❤ </span>by<a href="https://www.learningrobo.com/"> Learning Robo</a></div>
+          </span>
+          <span>
+            <span>Role :</span>
+            <span>  {{Infor.role}}</span>
+          </span>
+        </div>
+      </div>
       </div>
     </div>
    
